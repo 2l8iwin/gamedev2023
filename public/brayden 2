@@ -1,0 +1,24 @@
+<h6>version 0.0.1.</h6>
+<h1align=ceter>t1a03-forms-fred.html</h1>
+<h3><font color=green> providing you can use: forms 2023</font></h3><br>
+the following are all elements (add to them):<br>
+<forms >
+brayden:<input type=text id="my text01" value="fred"><br>
+checkbox: <br>
+beef:<input type=checkbox><br>
+veggy: <input type=checkbox><br>
+radio buttons<br>
+95.4<input type=radio name="myrad01" value=""><br>
+101<input type=radio name="myrad01" value=""><br>
+hidden:<input type=hidden ><br>
+file:<input type=file ><br>
+reset:<input type=reset ><br>
+submit:<input type=submit ><br>
+button: <input type=button value="click" oneclick="{documet.getelementbyid('myarea01).value='cool'}"><br>
+<textarea:<br>
+<textarea id="myarea01" cols=60 rows=5 > cool this works </textarea><br>
+select box:<br>
+<select id="myselect01" size=2 onchange="{document.getelementbyid('myarea01').value =  document.getelementbyid('myselect01').value}">
+<option value='my dog> dog
+<option value='mycat'>cat
+<option value=' mymouse'>mouse
