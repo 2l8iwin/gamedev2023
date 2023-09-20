@@ -1,0 +1,25 @@
+<body
+version 0.0.1</br>
+<h1 align=center>t1a04 css by fred 2023</h1>
+refernce link 
+<a href="https://www.w3schools.com/cssref/default.asp">w3schools</a><br>
+css is properly done with a .css file listing all css
+commands for your website<br>
+another way to do css is using the stile tag at the top head part of a webpage<br>
+here is typeical in document style <pre>
+b {color: #00ff00;}
+</pre><br>
+i do css inline inside the tag. it overpowers all other methids<br><br> 
+<i > this is italic</i><br>
+<i id="myb1" style="color:#00ff00' backround-color:blue; ">this is italic with css
+backround-color and main color</i>
+<input type=button value=change onclick
+document.getelementbyid('myb1').style.color=red
+document.getelementbyid('myb1').style.backroundcolor + 'yellow'
+}"><br><br>
+textarea style=" backround-image: url(mynewimage.jpg'); position:relitive; left:0; top:0" with:200; height:50; ">
+advaced see if you can move this textarea
+</textarea><br>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<img src+"myimage01.jpg" with=200 style=" border-radius:200px">
+</body>
