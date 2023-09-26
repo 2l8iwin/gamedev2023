@@ -1,0 +1,28 @@
+<h3 align=center>t1z02-object-zombie-fred.hml</h3>
+<script>
+
+let mythingname = ['jon','dan','fred']
+let mythingzombie = [true, false, true]
+
+</script>
+
+is <select id="myselect01" size=1 onchange="{
+myinput = document.getelementbyid('myselect01').value
+for (myloop=0; myloop< 4; myloop++){
+if(mythingname[myloop] == myinput){
+if (mythingzombie[myloop]){
+document.getelementbyid('mydiv01').innerhtml = myinput + ' is a zombie
+} else {
+document.getelementbyid('mydiv01').innerhtml = myinput + ' is not a zombie
+
+}
+}
+}
+}">
+<option>
+<option>jon
+<option>dan
+<option>fred
+</select> a zombie? really!<br>
+
+<div id="mydiv01">...<.div><br>
