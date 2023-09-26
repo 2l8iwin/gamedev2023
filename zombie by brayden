@@ -1,8 +1,8 @@
 <h3 align=center>t1z02-object-zombie-fred.hml</h3>
 <script>
 
-let mythingname = ['jon','dan','fred']
-let mythingzombie = [true, false, true]
+let mythingname = ['jon','dan','fred','brayden','bob']
+let mythingzombie = [true, false, true, false, true]
 
 </script>
 
@@ -23,6 +23,8 @@ document.getelementbyid('mydiv01').innerhtml = myinput + ' is not a zombie
 <option>jon
 <option>dan
 <option>fred
+<option>brayden
+<option>bob
 </select> a zombie? really!<br>
 
 <div id="mydiv01">...<.div><br>
