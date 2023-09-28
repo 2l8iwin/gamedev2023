@@ -1,6 +1,8 @@
 <h2 align=center>y1z04-classes-by-brayden.html</h2>
 <script>
 
+extends {}
+
 class myperson {
   constructor(passname, passage) {
     this.myname = passname;
@@ -12,7 +14,7 @@ class myperson {
 are ' + this.myage + ' years old<br>
 }
 
-} // end class myanimal
+} // end class myanimal 
 
 </script>
 
