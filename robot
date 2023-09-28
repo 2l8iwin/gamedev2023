@@ -18,7 +18,7 @@ are ' + this.myage + ' years old<br>
 
 <input type=button value="class person" onclick="{
 
-mycharacter = new myperson('rob', 52)
+mycharacter = new myperson('elon', 52)
 mycharacter.myshow()
 
 }">
