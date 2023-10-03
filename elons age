@@ -1,0 +1,26 @@
+<h2 align=center>t1z04-classes-by-brayden.html</h2>
+<script>
+
+class myperson {
+construtor(passname, pasage) {
+this.myname = passname;
+this.myage = passage;
+}
+
+myshow(){
+document.getelementbyid('mydiv01').innerhtml = 'hello '+ this.myname + '. you
+are ' + this.myage + ' years old<br>
+}
+
+} // end class myanimal
+
+<script>
+
+<input type=button value="class person" onclick="{
+
+mycharacter = new myperson('elon',52)
+mycharacter.myshow()
+
+}">
+
+<div id="mydiv01">...</div>
