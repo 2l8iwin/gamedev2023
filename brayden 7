@@ -1,0 +1,34 @@
+version 0.0.1-1 <br>
+
+<h2 align=center>t1a10-events-by-brayden.html</h2>
+
+<a href="htttps://way2tutorial.com/html/htm15_events_handler_lists.php">
+good refernce to htm1 events</a> <br>
+
+events are html code that activates javascript code
+
+<h4> example events code </h4>
+<pre>
+<b id=myb01" onmouseout="{
+document.getelementbyid('myb01').innerhtml = 'this is bold.'
+}"> bold stuff here </b>
+</pre>
+
+<h4> example working event</h4>
+<input type=text id="mytext01" value="3"><br>
+
+input type=button value="example onclick" onclick="{
+document.getelementbyid('mydiv01').innerhtml =
+document.getelementbyid('mytext01').value
+}">
+
+<div id="mydiv01">...</div>
+
+<b id="myb02" onmouseout="{
+document.getelementbyid('myb02').innerhtml = 'this is nice.'
+}"      onmouseover = "{
+document.getelementbyid('myb02').innerhtml = 'this is cool.'
+}"> this is bold</b> <br><br>
+
+you do atleast 8 other events:<br>
+onclick, ondbclick, onchange, onblur, onfocus, ormousemove, ontouch, onkeydown, onkeypress, ondragstart, ontouchstart, ontouchstart, ontouchend, ontouchend
