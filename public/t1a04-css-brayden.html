@@ -23,3 +23,53 @@ advaced see if you can move this textarea
 <br><br><br><br><br><br><br><br><br><br><br><br>
 <img src+"myimage01.jpg" with=200 style=" border-radius:200px">
 </body>
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Version 0.0.1</title>
+    <style>
+        /* Your existing CSS styles */
+
+        .draggable {
+            resize: both;
+            overflow: auto;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Your existing content -->
+
+    <textarea id="movableTextarea" class="draggable">Advanced: See if you can move this textarea</textarea>
+
+    <script>
+        var offsetX, offsetY, isDragging = false;
+
+        var textarea = document.getElementById("movableTextarea");
+
+        textarea.addEventListener('mousedown', function (e) {
+            isDragging = true;
+            offsetX = e.clientX - textarea.getBoundingClientRect().left;
+            offsetY = e.clientY - textarea.getBoundingClientRect().top;
+        });
+
+        document.addEventListener('mousemove', function (e) {
+            if (!isDragging) return;
+
+            var x = e.clientX - offsetX;
+            var y = e.clientY - offsetY;
+
+            textarea.style.left = x + "px";
+            textarea.style.top = y + "px";
+        });
+
+        document.addEventListener('mouseup', function () {
+            isDragging = false;
+        });
+    </script>
+</body>
+
+</html>
