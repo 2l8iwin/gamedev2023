@@ -29,3 +29,56 @@ document.getelementbyid('mydiv01).innerhhtml = myinput + ' is not a zombie'
 </select > a zombie?<br
 
 <div id="mydiv01">...</div><br>
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>t1z02-object-zombie-fred.html</title>
+</head>
+
+<body>
+    <h3 align="center">t1z02-object-zombie-fred.html</h3>
+
+    <script>
+        let zombies = [
+            { 'zombie': true, 'name': 'jon' },
+            { 'zombie': true, 'name': 'alice' },
+            // Add more zombie objects as needed
+        ];
+
+        let humans = [
+            { 'zombie': false, 'name': 'dan' },
+            { 'zombie': false, 'name': 'sara' },
+            // Add more human objects as needed
+        ];
+
+        function checkZombie() {
+            let myinput = document.getElementById('myselect01').value;
+
+            let isZombie = zombies.some(zombie => zombie.name === myinput && zombie.zombie);
+            let isHuman = humans.some(human => human.name === myinput && !human.zombie);
+
+            if (isZombie) {
+                document.getElementById('mydiv01').innerHTML = myinput + ' is a zombie';
+            } else if (isHuman) {
+                document.getElementById('mydiv01').innerHTML = myinput + ' is not a zombie';
+            } else {
+                document.getElementById('mydiv01').innerHTML = myinput + ' is not found';
+            }
+        }
+    </script>
+
+    <label for="myselect01">Select a person:</label>
+    <select id="myselect01" size="1" onchange="checkZombie()">
+        <option>jon</option>
+        <option>alice</option>
+        <option>dan</option>
+        <option>sara</option>
+        <!-- Add more options as needed -->
+    </select> is a zombie?<br>
+
+    <div id="mydiv01">...</div><br>
+</body>
+
+</html>
