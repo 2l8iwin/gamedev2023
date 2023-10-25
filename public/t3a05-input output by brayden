@@ -1,0 +1,17 @@
+version 0.1.2.3
+
+<h2 align=center>t3a05-input output by brayden</h2>
+
+<a href="https://www.w3schools.com/jsref/prop_html_innerhtml.asp">good refernce to input output javascript innerhtml value by brayden</a>
+
+<h4> example input output code </h4>
+<pre>
+let myin01 = document.getelementbyid('mynum01').value
+document.elementbyid('mydiv1').innerhtml = myin01 + ' square = ' + myin01*myin01
+</pre>
+
+<h4> example working code </h4>
+
+<input id="mynumber01" type=number value="4" ><br>
+
+<input type=button value="myevent sque
