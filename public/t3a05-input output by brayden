@@ -14,4 +14,10 @@ document.elementbyid('mydiv1').innerhtml = myin01 + ' square = ' + myin01*myin01
 
 <input id="mynumber01" type=number value="4" ><br>
 
-<input type=button value="myevent sque
+<input type=button value="myevent square" onclick="{
+let myin01 = parsefloat(document.getelementbyid('mynum01').value)
+let myanswer = myin01 * myin01
+document.getelementbyid('mydiv01').innerhtml = ' squared = ' + myanwser 
+}"><br>
+
+<div id="mydiv01">...</div>
