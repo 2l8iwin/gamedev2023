@@ -14,3 +14,17 @@ verson 0.0.1
     let myin01 = document.getelementbyid('mytext01').value
     document.
   </pre>
+
+<h4> example working code</h4>
+
+<input id="mytext01" type=text value="show variable" onclick='{
+  let myin01 = document.getelementbyid('mydiv01').innerhtml = myin01
+
+  }"><br>
+
+  input type=button value="usein no varible" onclick="{
+  document.getelementbyid('mydiv01').innerhtml = 
+  document.getelementbyid('mytext01').value
+  }"><br>
+
+  <div id="mydiv01">...</div>
