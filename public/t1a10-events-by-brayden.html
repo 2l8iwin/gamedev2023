@@ -33,63 +33,72 @@ document.getelementbyid('myb02').innerhtml = 'this is cool.'
 you do atleast 8 other events:<br>
 onclick, ondbclick, onchange, onblur, onfocus, ormousemove, ontouch, onkeydown, onkeypress, ondragstart, ontouchstart, ontouchstart, ontouchend, ontouchend
 
-  <script>
-    function handleClick() {
-      alert("Button clicked!");
-    }
+fixed code
+<html lang="en">
 
-    function handleDoubleClick() {
-      alert("Double-clicked!");
-    }
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Handling Example</title>
+    <script>
+        function handleClick() {
+            alert("Button clicked!");
+        }
 
-    function handleChange() {
-      var inputValue = document.getElementById("myInput").value;
-      console.log("Input changed to: " + inputValue);
-    }
+        function handleDoubleClick() {
+            alert("Double-clicked!");
+        }
 
-    function handleBlur() {
-      console.log("Input lost focus");
-    }
+        function handleChange() {
+            var inputValue = document.getElementById("myInput").value;
+            console.log("Input changed to: " + inputValue);
+        }
 
-    function handleFocus() {
-      console.log("Input focused");
-    }
+        function handleBlur() {
+            console.log("Input lost focus");
+        }
 
-    function handleMouseMove(event) {
-      var x = event.clientX;
-      var y = event.clientY;
-      console.log("Mouse coordinates: X=" + x + ", Y=" + y);
-    }
+        function handleFocus() {
+            console.log("Input focused");
+        }
 
-    function handleTouchStart(event) {
-      console.log("Touch started");
-    }
+        function handleMouseMove(event) {
+            var x = event.clientX;
+            var y = event.clientY;
+            console.log("Mouse coordinates: X=" + x + ", Y=" + y);
+        }
 
-    function handleTouchEnd(event) {
-      console.log("Touch ended");
-    }
+        function handleTouchStart(event) {
+            console.log("Touch started");
+        }
 
-    function handleKeyDown(event) {
-      console.log("Key pressed: " + event.key);
-    }
+        function handleTouchEnd(event) {
+            console.log("Touch ended");
+        }
 
-    function handleKeyPress(event) {
-      console.log("Key pressed with code: " + event.keyCode);
-    }
+        function handleKeyDown(event) {
+            console.log("Key pressed: " + event.key);
+        }
 
-    function handleDragStart(event) {
-      console.log("Drag started");
-    }
-  </script>
+        function handleKeyPress(event) {
+            console.log("Key pressed with code: " + event.charCode);
+        }
+
+        function handleDragStart(event) {
+            console.log("Drag started");
+        }
+    </script>
 </head>
+
 <body>
-  <button onclick="handleClick()">Click me</button><br><br>
-  <div ondblclick="handleDoubleClick()">Double-click me</div><br><br>
-  <input type="text" id="myInput" onchange="handleChange()" onblur="handleBlur()" onfocus="handleFocus()"><br><br>
-  <div onmousemove="handleMouseMove(event)" style="width: 200px; height: 200px; background-color: lightblue;"></div><br><br>
-  <div ontouchstart="handleTouchStart(event)" ontouchend="handleTouchEnd(event)" style="width: 200px; height: 200px; background-color: lightgreen;"></div><br><br>
-  <textarea onkeydown="handleKeyDown(event)" onkeypress="handleKeyPress(event)"></textarea><br><br>
-  <div ondragstart="handleDragStart(event)" draggable="true">Drag me</div>
+    <button onclick="handleClick()">Click me</button><br><br>
+    <div ondblclick="handleDoubleClick()">Double-click me</div><br><br>
+    <input type="text" id="myInput" onchange="handleChange()" onblur="handleBlur()" onfocus="handleFocus()"><br><br>
+    <div onmousemove="handleMouseMove(event)" style="width: 200px; height: 200px; background-color: lightblue;"></div><br><br>
+    <div ontouchstart="handleTouchStart(event)" ontouchend="handleTouchEnd(event)" style="width: 200px; height: 200px; background-color: lightgreen;"></div><br><br>
+    <textarea onkeydown="handleKeyDown(event)" onkeypress="handleKeyPress(event)"></textarea><br><br>
+    <div ondragstart="handleDragStart(event)" draggable="true">Drag me</div>
 </body>
+
 </html>
 
