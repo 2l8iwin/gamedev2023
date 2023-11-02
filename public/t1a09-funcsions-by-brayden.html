@@ -36,3 +36,55 @@ document.getelementbyid('mydiv01').innerhtml = myexamplefunction()
 }">
 
 <div id="mydiv01>...</div>
+
+
+  fixed code
+
+ 
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Version 0.0.1</title>
+</head>
+
+<body>
+
+    <h2 align=center>t1a09-functions-by-brayden.html</h2>
+
+    <a href="https://www.w3schools.com/js/js_functions.asp">good reference to JavaScript functions</a><br>
+
+    Functions are used to sensibly organize code. Then they are "called" elsewhere.
+    Information can also be passed to functions (that's more advanced).
+
+    <h4>Example functions code</h4>
+    <pre>
+function mynumbergrab() {
+    return parseInt(document.getElementById('mytext01').value);
+}
+    </pre>
+
+    <h4>Example working code</h4>
+
+    <input type="text" id="mytext01" value="3"><br>
+
+    <input type="button" value="function example" onclick="{
+        document.getElementById('mydiv01').innerHTML = myexamplefunction();
+    }">
+
+    <div id="mydiv01">...</div>
+
+    <script>
+        function myexamplefunction() {
+            let myin01 = parseInt(document.getElementById('mytext01').value);
+            let mysum = myin01 + myin01;
+            let myreply = myin01 + ' + ' + myin01 + ' = ' + mysum;
+            return myreply;
+        }
+    </script>
+
+</body>
+
+</html>
+
