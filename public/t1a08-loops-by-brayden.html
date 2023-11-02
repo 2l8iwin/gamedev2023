@@ -33,3 +33,50 @@ document.getelamentbyid('mydiv01').innerhtml + mytemp
 
 
 <div id="mydiv01">...</div>
+
+
+fixed code
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Version 0.0.1</title>
+</head>
+
+<body>
+
+    <h2 align=center>t1a08-loops-by-brayden.html</h2>
+
+    <a href="">good reference to JavaScript loops</a><br>
+
+    <h4>Enable output code</h4>
+    <pre></pre>
+
+    <h4>Example working code</h4>
+
+    Max loops: <input id="mynum01" type="number" value="4"><br>
+
+    <input type="button" value="Basic for loop with decisions" onclick="{
+        document.getElementById('mydiv01').innerHTML = '';
+        let mytemp = '';
+        let mymax = parseInt(document.getElementById('mynum01').value);
+
+        for (let myloop = 0; myloop < mymax; myloop++) {
+            if (myloop * 2 > mymax) {
+                mytemp += ' cool ';
+            }
+
+            mytemp += 'loop number: ' + myloop + '<br>';
+        }
+
+        document.getElementById('mydiv01').innerHTML = mytemp;
+    }">
+
+    <div id="mydiv01">...</div>
+
+</body>
+
+</html>
+
+
