@@ -1,8 +1,8 @@
 import random
 
 class Gun:
-    def __init__(self):
-        self.bullets = 0
+    def __init__(self, bullets):
+        self.bullets = bullets
 
     def shoot(self):
         if self.bullets > 0:
@@ -21,64 +21,43 @@ class Gun:
     def explode(self):
         print("💥💥💥 The bullet exploded on impact!")
 
-def handle_player_action(gun, bounce_probability):
-    action = input("Enter 's' to shoot, 'r' to reload: ").lower()
-    if action == 's':
-        gun.shoot()
-        if random.random() < bounce_probability:
-            gun.bounce()
-        else:
-            gun.explode()
-    elif action == 'r':
-        gun.reload(random.randint(1, 6))
-    else:
-        print("Invalid choice. You missed your turn.")
-
-def handle_random_event(enemy_probability, player_health, score, gun):
-    if random.random() < enemy_probability:
-        print("👾 Enemy encountered!")
-        damage = random.randint(10, 30)
-        player_health -= damage
-        if player_health <= 0:
-            print(f"You were defeated. Game over! Your final score: {score}")
-            return False
-        else:
-            print(f"You received {damage} damage. Your health: {player_health}")
-    else:
-        print("You explored and found extra bullets!")
-        bullets_found = random.randint(1, 6)
-        print(f"You found {bullets_found} bullets!")
-        gun.reload(bullets_found)
-    return True
-
 def play_shooting_game():
-    player_health = 100
-    rounds = 20
-    score = 0
-    gun = Gun()
+    rounds = 10
+    gun = Gun(bullets=rounds)
 
-    print("Welcome to the Shooting Game!")
-    difficulty = input("Choose difficulty (easy/medium/hard): ").lower()
+    for _ in range(rounds):
+        print("\nRound", _ + 1)
+        action = input("Enter 's' to shoot, 'r' to reload: ").lower()
 
-    if difficulty == "easy":
-        enemy_probability = 0.2
-        bounce_probability = 0.4
-    elif difficulty == "medium":
-        enemy_probability = 0.4
-        bounce_probability = 0.3
-    else:
-        enemy_probability = 0.6
-        bounce_probability = 0.9
+        if action == 's':
+            gun.shoot()
+            # Simulate the bullet bouncing randomly
+            if random.choice([True, False]):
+                gun.bounce()
+            else:
+                gun.explode()
+        elif action == 'r':
+            gun.reload(random.randint(1, 6))  # Reload random number of bullets (1 to 6)
+        else:
+            print("Invalid choice. You missed your turn.")
 
-    for round_number in range(1, rounds + 1):
-        print(f"\nRound {round_number}")
-        handle_player_action(gun, bounce_probability)
-        event_result = handle_random_event(enemy_probability, player_health, score, gun)
-        if not event_result:
-            break
-        score += 10
+        # Random event: Enemy encounter or finding extra bullets
+        if random.choice([True, False]):
+            print("👾 Enemy encountered!")
+            enemy_action = random.choice(['s', 'r'])
+            if enemy_action == 's':
+                print("Enemy shot at you!")
+            else:
+                print("You found extra bullets!")
+                gun.reload(random.randint(1, 6))
 
-    print("Game over! Better luck next time!")
+    print("\nGame over! You survived.")
 
 # Run the game
 play_shooting_game()
+
+
+https://replit.com/@braydensears2/PrettyGhostwhiteMarkuplanguage#main.py
+play_shooting_game()
+
+
