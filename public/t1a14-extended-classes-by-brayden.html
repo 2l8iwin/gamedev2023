@@ -59,25 +59,64 @@ mypet.myshow()
 you can try to extend this class and make other classes or add more propertys to the class or add more methodsto the class.
 
   
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HTML Classes Example</title>
-  <style>
-    .animal {
-      color: green;
-    }
 
-    .cat {
-      color: black;
-      font-weight: bold;
-    }
-  </style>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Improved HTML Classes Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .animal {
+            color: #4CAF50;
+            font-size: 1.2em;
+        }
+
+        .cat {
+            color: #333;
+            font-weight: bold;
+            font-size: 1.5em;
+        }
+
+        @media screen and (max-width: 768px) {
+            .cat {
+                font-size: 1.2em;
+            }
+        }
+    </style>
 </head>
+
 <body>
-  <h2 class="animal">This is an animal.</h2>
-  <h2 class="cat">This is a cat.</h2>
+    <header>
+        <h1>Animals Example</h1>
+    </header>
+
+    <main>
+        <section>
+            <h2 class="animal">This is an animal.</h2>
+        </section>
+        <section>
+            <h2 class="cat">This is a cat.</h2>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Animals World</p>
+    </footer>
 </body>
+
 </html>
 
