@@ -1,2 +1,31 @@
-version 0.0.1
-<h2> align=center>t1a13-classes -by-brayden.html</h2>
+class Car:
+    def __init__(self, make, model, year):
+        self.make = make
+        self.model = model
+        self.year = year
+        self.speed = 0
+
+    def accelerate(self):
+        self.speed += 5
+
+    def brake(self):
+        if self.speed >= 5:
+            self.speed -= 5
+        else:
+            self.speed = 0
+
+    def get_speed(self):
+        return self.speed
+
+# Creating an instance of the Car class
+my_car = Car("Toyota", "Camry", 2022)
+
+# Accessing class attributes and methods
+print(f"My car is a {my_car.year} {my_car.make} {my_car.model}.")
+print("Current speed:", my_car.get_speed())
+
+my_car.accelerate()
+print("Accelerating... Current speed:", my_car.get_speed())
+
+my_car.brake()
+print("Applying brakes... Current speed:", my_car.get_speed())
