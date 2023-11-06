@@ -21,3 +21,34 @@ document.getelementbyid('mydiv01').innerhtml = ' squared = ' + myanwser
 }"><br>
 
 <div id="mydiv01">...</div>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Output Example</title>
+</head>
+
+<body>
+    <h1>Input Output Example</h1>
+
+    <label for="userInput">Enter your text:</label>
+    <input type="text" id="userInput">
+    <button onclick="displayOutput()">Submit</button>
+
+    <h2>Output:</h2>
+    <div id="output"></div>
+
+    <script>
+        function displayOutput() {
+            var userInput = document.getElementById("userInput").value;
+            var outputElement = document.getElementById("output");
+            outputElement.textContent = "You entered: " + userInput;
+        }
+    </script>
+</body>
+
+</html>
+
