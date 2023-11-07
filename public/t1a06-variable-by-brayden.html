@@ -54,18 +54,20 @@ verson 0.0.1
 
     <script>
         function calculateSum() {
-            // Get input values and convert them to numbers
             var num1 = parseFloat(document.getElementById("num1").value);
             var num2 = parseFloat(document.getElementById("num2").value);
 
-            // Calculate the sum using a variable
-            var sum = num1 + num2;
-
-            // Display the result in the HTML document
-            document.getElementById("result").textContent = "Sum: " + sum;
+            // Check if input is valid
+            if (isNaN(num1) || isNaN(num2)) {
+                document.getElementById("result").textContent = "Invalid input. Please enter numbers.";
+            } else {
+                var sum = num1 + num2;
+                document.getElementById("result").textContent = "Sum: " + sum;
+            }
         }
     </script>
 </body>
 
 </html>
+
 
