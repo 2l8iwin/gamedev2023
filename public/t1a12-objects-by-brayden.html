@@ -85,3 +85,42 @@ document.getelementbyid('mydiv01').innerhtml += 'you do the others <br> '
 
 </html>
 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Person Information</title>
+</head>
+
+<body>
+
+    <h2>Person Information</h2>
+
+    <button onclick="showPerson()">Show Person Details</button>
+
+    <div id="mydiv01"></div>
+
+    <script>
+        function showPerson() {
+            let myperson = {
+                'firstname': 'brayden',
+                'lastname': 'sears',
+                'age': 16,
+                'eyecolor': 'blue'
+            };
+
+            let output = '<br>myperson object has properties: <br>';
+            output += 'Firstname: ' + myperson.firstname + '<br>';
+            output += 'Lastname: ' + myperson.lastname + '<br>';
+            output += 'Age: ' + myperson.age + '<br>';
+            output += 'Eye Color: ' + myperson.eyecolor + '<br>';
+
+            document.getElementById('mydiv01').innerHTML = output;
+        }
+    </script>
+
+</body>
+
+</html>
