@@ -30,8 +30,14 @@
             font-size: 1.5em;
         }
 
+        .bird {
+            color: #007bff;
+            font-weight: bold;
+            font-size: 1.5em;
+        }
+
         @media screen and (max-width: 768px) {
-            .cat {
+            .cat, .bird {
                 font-size: 1.2em;
             }
         }
@@ -49,9 +55,9 @@
 
         <h4>Example class extend code:</h4>
         <pre>
-class MyCat extends MyAnimal {
+class MyBird extends MyAnimal {
     myShow() {
-        document.getElementById('mydiv01').innerHTML = this.myName + ' is a great cat';
+        document.getElementById('mydiv01').innerHTML = this.myName + ' is a beautiful bird';
     }
 }
         </pre>
@@ -64,14 +70,24 @@ class MyCat extends MyAnimal {
 
         <h4>Example extending class code:</h4>
         <div>Nothing: <input type="text" id="mytext01" value="useless at the moment"></div>
-        <input type="button" value="Example extend class animal" onclick="{
+        <input type="button" value="Example extend class cat" onclick="{
             class MyCat extends MyAnimal {
                 myShow() {
                     document.getElementById('mydiv01').innerHTML = this.myName + ' is a great cat';
                 }
             }
-            let myPet = new MyCat('Fluffy', 14);
-            myPet.myShow();
+            let myCat = new MyCat('Fluffy', 14);
+            myCat.myShow();
+        }">
+
+        <input type="button" value="Example extend class bird" onclick="{
+            class MyBird extends MyAnimal {
+                myShow() {
+                    document.getElementById('mydiv01').innerHTML = this.myName + ' is a beautiful bird';
+                }
+            }
+            let myBird = new MyBird('Robin', 2);
+            myBird.myShow();
         }">
 
         <div id="mydiv01">...</div>
@@ -98,6 +114,7 @@ class MyCat extends MyAnimal {
 </body>
 
 </html>
+
 
 
 </html>
