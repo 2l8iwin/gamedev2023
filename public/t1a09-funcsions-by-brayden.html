@@ -88,3 +88,56 @@ function mynumbergrab() {
 
 </html>
 
+
+
+  code
+
+  <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Version 0.0.1</title>
+</head>
+
+<body>
+
+    <h2 style="text-align: center;">t1a08-loops-by-brayden.html</h2>
+
+    <a href="https://example.com/javascript-loops-reference" target="_blank">Good reference to JavaScript loops</a><br>
+
+    <h4>Enable output code</h4>
+    <pre id="output"></pre>
+
+    <h4>Example working code</h4>
+
+    Max loops: <input id="mynum01" type="number" value="4"><br>
+
+    <input type="button" value="Basic for loop with decisions" id="runButton">
+
+    <div id="mydiv01">...</div>
+
+    <script>
+        function generateLoopOutput(maxLoops) {
+            let mytemp = '';
+            for (let myloop = 0; myloop < maxLoops; myloop++) {
+                if (myloop * 2 > maxLoops) {
+                    mytemp += ' cool ';
+                }
+                mytemp += 'loop number: ' + myloop + '<br>';
+            }
+            return mytemp;
+        }
+
+        document.getElementById('runButton').addEventListener('click', function() {
+            const mymax = parseInt(document.getElementById('mynum01').value);
+            const result = generateLoopOutput(mymax);
+            document.getElementById('output').textContent = result;
+        });
+    </script>
+
+</body>
+
+</html>
+
