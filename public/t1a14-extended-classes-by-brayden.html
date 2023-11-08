@@ -1,72 +1,10 @@
-<script>
-
-class myanimal {
-constructor(passname, passage) {
-this.myname = passname;
-this.myage = passage;
-
-}
-myshow(){
-document.getelementbyid('mydiv01').innerhtml = 'hello '+ this.myname+'<br>'
-}
-} // end class myanimal
-
-<script>
-
-version 0.0.1
-<h2 align=center>t1a14-extended-classes-by-brayden.html</h2>
-
-extending a pre-existing class <br>
-
-<h4> example class extend code</h4>
-<pre>
-
-class mycat extends myanimal {
-myshow(){
-document.getelementbyid('myd01').innerhtml = this.myname
-}
-}
-
-</pre>
-
-<h4>example working code</h4>
-
-<input type=button value="example class set and show class animal" onclick="{
-
-mydog = new myanimal('stikers', 5)
-mydog.myshow()
-
-}">
-
-<h4>example extending class code</h4>
-nothing: <input type=text id="mytext01" value="useless at the moment"><br>
-
-<input type=button value="example extend class animal" onclick="{
-
-class mycat extends myanimal {
-myshow(){
-document.getelementbyid('mydiv01').innerhtml = this.myname + ' is a graet cat<br>
-}
-}    // end extended class mycat
-
-mypet = new mycat('fluffy', 14)
-mypet.myshow()
-
-}">
-
-<div id="mydiv01>...</div>
-
-you can try to extend this class and make other classes or add more propertys to the class or add more methodsto the class.
-
-  
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Improved HTML Classes Example</title>
+    <title>t1a14-extended-classes-by-brayden.html</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -106,17 +44,57 @@ you can try to extend this class and make other classes or add more propertys to
     </header>
 
     <main>
-        <section>
-            <h2 class="animal">This is an animal.</h2>
-        </section>
-        <section>
-            <h2 class="cat">This is a cat.</h2>
-        </section>
+        <h2 align="center">t1a14-extended-classes-by-brayden.html</h2>
+        <p>Extending a pre-existing class.</p>
+
+        <h4>Example class extend code:</h4>
+        <pre>
+class MyCat extends MyAnimal {
+    myShow() {
+        document.getElementById('mydiv01').innerHTML = this.myName + ' is a great cat';
+    }
+}
+        </pre>
+
+        <h4>Example working code:</h4>
+        <input type="button" value="Example class set and show class animal" onclick="{
+            let myDog = new MyAnimal('Stickers', 5);
+            myDog.myShow();
+        }">
+
+        <h4>Example extending class code:</h4>
+        <div>Nothing: <input type="text" id="mytext01" value="useless at the moment"></div>
+        <input type="button" value="Example extend class animal" onclick="{
+            class MyCat extends MyAnimal {
+                myShow() {
+                    document.getElementById('mydiv01').innerHTML = this.myName + ' is a great cat';
+                }
+            }
+            let myPet = new MyCat('Fluffy', 14);
+            myPet.myShow();
+        }">
+
+        <div id="mydiv01">...</div>
+
+        <p>You can try to extend this class and make other classes or add more properties to the class or add more methods to the class.</p>
     </main>
 
     <footer>
         <p>&copy; 2023 Animals World</p>
     </footer>
+
+    <script>
+        class MyAnimal {
+            constructor(passName, passAge) {
+                this.myName = passName;
+                this.myAge = passAge;
+            }
+
+            myShow() {
+                document.getElementById('mydiv01').innerHTML = 'Hello ' + this.myName + '<br>';
+            }
+        }
+    </script>
 </body>
 
 </html>
