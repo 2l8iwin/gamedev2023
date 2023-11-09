@@ -13,7 +13,7 @@
 
     <h4>Example input output code</h4>
     <pre>
-        let myin01 = document.getElementById('mynumber01').value;
+        let myin01 = parseFloat(document.getElementById('mynumber01').value);
         document.getElementById('mydiv01').innerHTML = myin01 + ' squared = ' + myin01 * myin01;
     </pre>
 
@@ -25,14 +25,7 @@
         document.getElementById('mydiv01').innerHTML = ' squared = ' + myanswer;
     }"><br>
     <div id="mydiv01">...</div>
-
-    <script>
-        function displayOutput() {
-            var userInput = document.getElementById("userInput").value;
-            var outputElement = document.getElementById("output");
-            outputElement.textContent = "You entered: " + userInput;
-        }
-    </script>
 </body>
 
 </html>
+
