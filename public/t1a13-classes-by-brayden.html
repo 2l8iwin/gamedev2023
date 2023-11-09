@@ -1,31 +1,55 @@
-class Car:
-    def __init__(self, make, model, year):
-        self.make = make
-        self.model = model
-        self.year = year
-        self.speed = 0
+<!DOCTYPE html>
+<html lang="en">
 
-    def accelerate(self):
-        self.speed += 5
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Class Example</title>
+</head>
 
-    def brake(self):
-        if self.speed >= 5:
-            self.speed -= 5
-        else:
-            self.speed = 0
+<body>
+    <h1>Car Class Example</h1>
 
-    def get_speed(self):
-        return self.speed
+    <script>
+        class Car {
+            constructor(make, model, year) {
+                this.make = make;
+                this.model = model;
+                this.year = year;
+                this.speed = 0;
+            }
 
-# Creating an instance of the Car class
-my_car = Car("Toyota", "Camry", 2022)
+            accelerate() {
+                this.speed += 5;
+            }
 
-# Accessing class attributes and methods
-print(f"My car is a {my_car.year} {my_car.make} {my_car.model}.")
-print("Current speed:", my_car.get_speed())
+            brake() {
+                if (this.speed >= 5) {
+                    this.speed -= 5;
+                } else {
+                    this.speed = 0;
+                }
+            }
 
-my_car.accelerate()
-print("Accelerating... Current speed:", my_car.get_speed())
+            getSpeed() {
+                return this.speed;
+            }
+        }
 
-my_car.brake()
-print("Applying brakes... Current speed:", my_car.get_speed())
+        // Creating an instance of the Car class
+        const myCar = new Car("Toyota", "Camry", 2022);
+
+        // Accessing class attributes and methods
+        document.write(`My car is a ${myCar.year} ${myCar.make} ${myCar.model}.<br>`);
+        document.write(`Current speed: ${myCar.getSpeed()}<br>`);
+
+        myCar.accelerate();
+        document.write(`Accelerating... Current speed: ${myCar.getSpeed()}<br>`);
+
+        myCar.brake();
+        document.write(`Applying brakes... Current speed: ${myCar.getSpeed()}<br>`);
+    </script>
+</body>
+
+</html>
+
