@@ -117,6 +117,40 @@ class MyBird extends MyAnimal {
 
 
 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>t1a14-extended-classes-by-brayden.html</title>
+    <!-- Your styles here -->
+</head>
+
+<body>
+    <!-- Your existing HTML content here -->
+
+    <h4>Example extending class code:</h4>
+    <input type="button" value="Example extend class fish" onclick="{
+        class MyFish extends MyAnimal {
+            constructor(passName, passAge, passColor) {
+                super(passName, passAge);
+                this.myColor = passColor;
+            }
+
+            myShow() {
+                document.getElementById('mydiv01').innerHTML = `${this.myName} is a fish with age ${this.myAge} and color ${this.myColor}`;
+            }
+        }
+
+        let myFish = new MyFish('Nemo', 3, 'orange');
+        myFish.myShow();
+    }">
+
+    <!-- Your remaining content here -->
+</body>
+
 </html>
+
 
 
