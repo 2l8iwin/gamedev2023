@@ -13,16 +13,18 @@
 </head>
 
 <body version="0.0.1">
-    <h1 align="center">t1a04 css by fred 2023</h1>
+    <h1 style="text-align: center;">t1a04 css by fred 2023</h1>
     <p>Reference link: <a href="https://www.w3schools.com/cssref/default.asp">w3schools</a></p>
     <p>CSS is properly done with a .css file listing all CSS commands for your website.</p>
-    <p>Another way to do CSS is using the style tag at the top head part of a webpage. Here is a typical in-document style:</p>
+    <p>Another way to do CSS is using the style tag at the top head part of a webpage. Here is a typical in-document
+        style:</p>
     <pre>
         b { color: #00ff00; }
     </pre>
     <p>I do CSS inline inside the tag. It overpowers all other methods.</p>
     <i>This is italic.</i><br>
-    <i id="myb1" style="color:#00ff00; background-color:blue;">This is italic with CSS background-color and main color.</i>
+    <i id="myb1" style="color:#00ff00; background-color: blue;">This is italic with CSS background-color and main
+        color.</i>
     <br>
     <input type="button" value="Change" onclick="changeStyles()">
     <br><br>
@@ -34,7 +36,6 @@
     <script>
         function changeStyles() {
             var myb1 = document.getElementById('myb1');
-            myb1.style.color = 'red';
             myb1.style.backgroundColor = 'yellow';
         }
 
@@ -65,4 +66,5 @@
 </body>
 
 </html>
+
 
