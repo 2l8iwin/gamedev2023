@@ -10,6 +10,16 @@
 <body>
     <h1>Car Class Example</h1>
 
+    <label for="speedInput">Set Speed:</label>
+    <input type="number" id="speedInput" min="0" step="5" value="0">
+    <button onclick="setSpeed()">Set</button><br>
+
+    <button onclick="accelerate()">Accelerate</button>
+    <button onclick="brake()">Brake</button>
+
+    <p><strong>Car Information:</strong></p>
+    <p id="carInfo"></p>
+
     <script>
         class Car {
             constructor(make, model, year) {
@@ -17,6 +27,10 @@
                 this.model = model;
                 this.year = year;
                 this.speed = 0;
+            }
+
+            setSpeed(speed) {
+                this.speed = speed;
             }
 
             accelerate() {
@@ -36,18 +50,31 @@
             }
         }
 
-        // Creating an instance of the Car class
         const myCar = new Car("Toyota", "Camry", 2022);
 
-        // Accessing class attributes and methods
-        document.write(`My car is a ${myCar.year} ${myCar.make} ${myCar.model}.<br>`);
-        document.write(`Current speed: ${myCar.getSpeed()}<br>`);
+        function updateCarInfo() {
+            document.getElementById("carInfo").innerHTML = `Year: ${myCar.year}<br>Make: ${myCar.make}<br>Model: ${myCar.model}<br>Speed: ${myCar.getSpeed()}`;
+        }
 
-        myCar.accelerate();
-        document.write(`Accelerating... Current speed: ${myCar.getSpeed()}<br>`);
+        function setSpeed() {
+            const speedInput = document.getElementById("speedInput");
+            const newSpeed = parseInt(speedInput.value);
+            myCar.setSpeed(newSpeed);
+            updateCarInfo();
+        }
 
-        myCar.brake();
-        document.write(`Applying brakes... Current speed: ${myCar.getSpeed()}<br>`);
+        function accelerate() {
+            myCar.accelerate();
+            updateCarInfo();
+        }
+
+        function brake() {
+            myCar.brake();
+            updateCarInfo();
+        }
+
+        // Initial update of car information
+        updateCarInfo();
     </script>
 </body>
 
