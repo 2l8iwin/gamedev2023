@@ -1,27 +1,3 @@
-version 0.1.2.3
-
-<h2 align=center>t3a05-input output by brayden</h2>
-
-<a href="https://www.w3schools.com/jsref/prop_html_innerhtml.asp">good refernce to input output javascript innerhtml value by brayden</a>
-
-<h4> example input output code </h4>
-<pre>
-let myin01 = document.getelementbyid('mynum01').value
-document.elementbyid('mydiv1').innerhtml = myin01 + ' square = ' + myin01*myin01
-</pre>
-
-<h4> example working code </h4>
-
-<input id="mynumber01" type=number value="4" ><br>
-
-<input type=button value="myevent square" onclick="{
-let myin01 = parsefloat(document.getelementbyid('mynum01').value)
-let myanswer = myin01 * myin01
-document.getelementbyid('mydiv01').innerhtml = ' squared = ' + myanwser 
-}"><br>
-
-<div id="mydiv01">...</div>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,15 +7,24 @@ document.getelementbyid('mydiv01').innerhtml = ' squared = ' + myanwser
     <title>Input Output Example</title>
 </head>
 
-<body>
-    <h1>Input Output Example</h1>
+<body version="0.1.2.3">
+    <h2 align="center">t3a05-input output by brayden</h2>
+    <a href="https://www.w3schools.com/jsref/prop_html_innerhtml.asp">Good reference to input output JavaScript innerHTML value by Brayden</a>
 
-    <label for="userInput">Enter your text:</label>
-    <input type="text" id="userInput">
-    <button onclick="displayOutput()">Submit</button>
+    <h4>Example input output code</h4>
+    <pre>
+        let myin01 = document.getElementById('mynumber01').value;
+        document.getElementById('mydiv01').innerHTML = myin01 + ' squared = ' + myin01 * myin01;
+    </pre>
 
-    <h2>Output:</h2>
-    <div id="output"></div>
+    <h4>Example working code</h4>
+    <input id="mynumber01" type="number" value="4"><br>
+    <input type="button" value="myevent square" onclick="{
+        let myin01 = parseFloat(document.getElementById('mynumber01').value);
+        let myanswer = myin01 * myin01;
+        document.getElementById('mydiv01').innerHTML = ' squared = ' + myanswer;
+    }"><br>
+    <div id="mydiv01">...</div>
 
     <script>
         function displayOutput() {
@@ -51,4 +36,3 @@ document.getelementbyid('mydiv01').innerhtml = ' squared = ' + myanwser
 </body>
 
 </html>
-
