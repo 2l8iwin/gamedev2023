@@ -1,29 +1,3 @@
-<body
-version 0.0.1</br>
-<h1 align=center>t1a04 css by fred 2023</h1>
-refernce link 
-<a href="https://www.w3schools.com/cssref/default.asp">w3schools</a><br>
-css is properly done with a .css file listing all css
-commands for your website<br>
-another way to do css is using the stile tag at the top head part of a webpage<br>
-here is typeical in document style <pre>
-b {color: #00ff00;}
-</pre><br>
-i do css inline inside the tag. it overpowers all other methids<br><br> 
-<i > this is italic</i><br>
-<i id="myb1" style="color:#00ff00' backround-color:blue; ">this is italic with css
-backround-color and main color</i>
-<input type=button value=change onclick
-document.getelementbyid('myb1').style.color=red
-document.getelementbyid('myb1').style.backroundcolor + 'yellow'
-}"><br><br>
-textarea style=" backround-image: url(mynewimage.jpg'); position:relitive; left:0; top:0" with:200; height:50; ">
-advaced see if you can move this textarea
-</textarea><br>
-<br><br><br><br><br><br><br><br><br><br><br><br>
-<img src+"myimage01.jpg" with=200 style=" border-radius:200px">
-</body>
-
 <!DOCTYPE html>
 <html>
 
@@ -38,14 +12,35 @@ advaced see if you can move this textarea
     </style>
 </head>
 
-<body>
-
-    <textarea id="movableTextarea" class="draggable">Advanced: See if you can move this textarea</textarea>
+<body version="0.0.1">
+    <h1 align="center">t1a04 css by fred 2023</h1>
+    <p>Reference link: <a href="https://www.w3schools.com/cssref/default.asp">w3schools</a></p>
+    <p>CSS is properly done with a .css file listing all CSS commands for your website.</p>
+    <p>Another way to do CSS is using the style tag at the top head part of a webpage. Here is a typical in-document style:</p>
+    <pre>
+        b { color: #00ff00; }
+    </pre>
+    <p>I do CSS inline inside the tag. It overpowers all other methods.</p>
+    <i>This is italic.</i><br>
+    <i id="myb1" style="color:#00ff00; background-color:blue;">This is italic with CSS background-color and main color.</i>
+    <br>
+    <input type="button" value="Change" onclick="changeStyles()">
+    <br><br>
+    <textarea style="background-image: url('mynewimage.jpg'); position:relative; left:0; top:0; width: 200px; height: 50px;"
+        class="draggable">Advanced: See if you can move this textarea</textarea>
+    <br><br><br><br><br><br><br><br><br><br><br><br>
+    <img src="myimage01.jpg" width="200" style="border-radius: 200px;">
 
     <script>
+        function changeStyles() {
+            var myb1 = document.getElementById('myb1');
+            myb1.style.color = 'red';
+            myb1.style.backgroundColor = 'yellow';
+        }
+
         var offsetX, offsetY, isDragging = false;
 
-        var textarea = document.getElementById("movableTextarea");
+        var textarea = document.querySelector(".draggable");
 
         textarea.addEventListener('mousedown', function (e) {
             isDragging = true;
