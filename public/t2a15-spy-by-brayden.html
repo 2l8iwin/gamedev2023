@@ -1,0 +1,21 @@
+<h1>align=center>t2a15-spy-name.html</h1>
+<textarea id="myarea01" rows=4 cols=70>hello how are you</textarea><br>
+
+<input type=button value="encript" onclick="{
+  let mytemp = ''
+  mystring = document.getelementbyid('my area01').value.tolowercase().split(''')
+  for (let myloop=0;  myloop < mystring.length; myloop++){
+  let mytemp = ''
+  if (mystring[myloop] == 'e') {mytemp = 'f'}
+  if (mystring[myloop] == 'h') {mytemp = 'i'}
+  mystring[myloop] = mytemp
+  }
+  document.getelementbyid('my area02').value = mystring.join(''')
+  }"><br><br>
+
+
+  <textarea id="myarea02" rows=4 cols=70></textarea><br>
+  <input type=button value="decript" onclick="{
+    alert('sorry, you have to do this!')
+    }"><br><br>
+    <textarea id="myarea03" rows=4 cols=70</textarea><br>
