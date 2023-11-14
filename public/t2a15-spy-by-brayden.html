@@ -13,12 +13,12 @@
   let mytemp = '';
   let mystring = document.getElementById('myarea01').value.toLowerCase().split('');
   for (let myloop = 0; myloop < mystring.length; myloop++) {
-    let mytemp = '';
     if (mystring[myloop] == 'e') {
       mytemp = 'f';
-    }
-    if (mystring[myloop] == 'h') {
+    } else if (mystring[myloop] == 'h') {
       mytemp = 'i';
+    } else {
+      mytemp = mystring[myloop];
     }
     mystring[myloop] = mytemp;
   }
