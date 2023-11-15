@@ -7,18 +7,14 @@
 
 <h1 align="center">t2a15-spy-name.html</h1>
 
-<label for="key">Key:</label>
-<input type="text" id="key" placeholder="Enter key"><br>
-
 <textarea id="myarea01" rows=4 cols=70>hello how are you</textarea><br>
 
 <input type="button" value="encrypt" onclick="{
-  let key = parseInt(document.getElementById('key').value) || 0;
   let mytemp = '';
-  let mystring = document.getElementById('myarea01').value.split('');
+  let mystring = document.getElementById('myarea01').value.toLowerCase().split('');
   for (let myloop = 0; myloop < mystring.length; myloop++) {
     let currentChar = mystring[myloop];
-    let encryptedChar = encryptLetter(currentChar, key);
+    let encryptedChar = encryptLetter(currentChar);
     mystring[myloop] = encryptedChar;
   }
   document.getElementById('myarea02').value = mystring.join('');
@@ -27,12 +23,11 @@
 <textarea id="myarea02" rows=4 cols=70></textarea><br>
 
 <input type="button" value="decrypt" onclick="{
-  let key = parseInt(document.getElementById('key').value) || 0;
   let mytemp = '';
-  let mystring = document.getElementById('myarea02').value.split('');
+  let mystring = document.getElementById('myarea02').value.toLowerCase().split('');
   for (let myloop = 0; myloop < mystring.length; myloop++) {
     let currentChar = mystring[myloop];
-    let decryptedChar = decryptLetter(currentChar, key);
+    let decryptedChar = decryptLetter(currentChar);
     mystring[myloop] = decryptedChar;
   }
   document.getElementById('myarea03').value = mystring.join('');
@@ -41,20 +36,16 @@
 <textarea id="myarea03" rows=4 cols=70></textarea><br>
 
 <script>
-  function encryptLetter(char, key) {
+  function encryptLetter(char) {
     if (char >= 'a' && char <= 'z') {
-      return String.fromCharCode((char.charCodeAt(0) - 'a'.charCodeAt(0) + key) % 26 + 'a'.charCodeAt(0));
-    } else if (char >= 'A' && char <= 'Z') {
-      return String.fromCharCode((char.charCodeAt(0) - 'A'.charCodeAt(0) + key) % 26 + 'A'.charCodeAt(0));
+      return String.fromCharCode((char.charCodeAt(0) - 'a'.charCodeAt(0) + 1) % 26 + 'a'.charCodeAt(0));
     }
     return char;
   }
 
-  function decryptLetter(char, key) {
+  function decryptLetter(char) {
     if (char >= 'a' && char <= 'z') {
-      return String.fromCharCode((char.charCodeAt(0) - 'a'.charCodeAt(0) - key + 26) % 26 + 'a'.charCodeAt(0));
-    } else if (char >= 'A' && char <= 'Z') {
-      return String.fromCharCode((char.charCodeAt(0) - 'A'.charCodeAt(0) - key + 26) % 26 + 'A'.charCodeAt(0));
+      return String.fromCharCode((char.charCodeAt(0) - 'a'.charCodeAt(0) - 1 + 26) % 26 + 'a'.charCodeAt(0));
     }
     return char;
   }
@@ -62,5 +53,4 @@
 
 </body>
 </html>
-
 
