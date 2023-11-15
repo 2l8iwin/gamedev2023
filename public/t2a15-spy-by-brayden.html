@@ -7,7 +7,7 @@
 
 <h1 align="center">t2a15-spy-name.html</h1>
 
-<textarea id="myarea01" rows=4 cols=70>hello how are you</textarea><br>
+<textarea id="myarea01" rows=4 cols=70>hello how are you!@#</textarea><br>
 
 <input type="button" value="encrypt" onclick="{
   let mystring = document.getElementById('myarea01').value.split('');
@@ -40,7 +40,8 @@
     } else if (char >= 'A' && char <= 'Z') {
       return String.fromCharCode((char.charCodeAt(0) - 'A'.charCodeAt(0) + 1) % 26 + 'A'.charCodeAt(0));
     }
-    return char;
+    // Apply Caesar cipher to all characters, including special characters
+    return String.fromCharCode((char.charCodeAt(0) + 1) % 256);
   }
 
   function decryptLetter(char) {
@@ -49,9 +50,11 @@
     } else if (char >= 'A' && char <= 'Z') {
       return String.fromCharCode((char.charCodeAt(0) - 'A'.charCodeAt(0) - 1 + 26) % 26 + 'A'.charCodeAt(0));
     }
-    return char;
+    // Apply Caesar cipher to all characters, including special characters
+    return String.fromCharCode((char.charCodeAt(0) - 1 + 256) % 256);
   }
 </script>
 
 </body>
 </html>
+
