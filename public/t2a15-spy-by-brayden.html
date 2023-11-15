@@ -13,14 +13,9 @@
   let mytemp = '';
   let mystring = document.getElementById('myarea01').value.toLowerCase().split('');
   for (let myloop = 0; myloop < mystring.length; myloop++) {
-    if (mystring[myloop] == 'e') {
-      mytemp = 'f';
-    } else if (mystring[myloop] == 'h') {
-      mytemp = 'i';
-    } else {
-      mytemp = mystring[myloop];
-    }
-    mystring[myloop] = mytemp;
+    let currentChar = mystring[myloop];
+    let encryptedChar = encryptLetter(currentChar);
+    mystring[myloop] = encryptedChar;
   }
   document.getElementById('myarea02').value = mystring.join('');
 }"><br><br>
@@ -31,19 +26,30 @@
   let mytemp = '';
   let mystring = document.getElementById('myarea02').value.toLowerCase().split('');
   for (let myloop = 0; myloop < mystring.length; myloop++) {
-    if (mystring[myloop] == 'f') {
-      mytemp = 'e';
-    } else if (mystring[myloop] == 'i') {
-      mytemp = 'h';
-    } else {
-      mytemp = mystring[myloop];
-    }
-    mystring[myloop] = mytemp;
+    let currentChar = mystring[myloop];
+    let decryptedChar = decryptLetter(currentChar);
+    mystring[myloop] = decryptedChar;
   }
   document.getElementById('myarea03').value = mystring.join('');
 }"><br><br>
 
 <textarea id="myarea03" rows=4 cols=70></textarea><br>
+
+<script>
+  function encryptLetter(char) {
+    if (char >= 'a' && char <= 'z') {
+      return String.fromCharCode((char.charCodeAt(0) - 'a'.charCodeAt(0) + 1) % 26 + 'a'.charCodeAt(0));
+    }
+    return char;
+  }
+
+  function decryptLetter(char) {
+    if (char >= 'a' && char <= 'z') {
+      return String.fromCharCode((char.charCodeAt(0) - 'a'.charCodeAt(0) - 1 + 26) % 26 + 'a'.charCodeAt(0));
+    }
+    return char;
+  }
+</script>
 
 </body>
 </html>
