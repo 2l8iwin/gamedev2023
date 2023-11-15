@@ -28,10 +28,23 @@
 <textarea id="myarea02" rows=4 cols=70></textarea><br>
 
 <input type="button" value="decrypt" onclick="{
-  alert('Sorry, you have to do this!');
+  let mytemp = '';
+  let mystring = document.getElementById('myarea02').value.toLowerCase().split('');
+  for (let myloop = 0; myloop < mystring.length; myloop++) {
+    if (mystring[myloop] == 'f') {
+      mytemp = 'e';
+    } else if (mystring[myloop] == 'i') {
+      mytemp = 'h';
+    } else {
+      mytemp = mystring[myloop];
+    }
+    mystring[myloop] = mytemp;
+  }
+  document.getElementById('myarea03').value = mystring.join('');
 }"><br><br>
 
 <textarea id="myarea03" rows=4 cols=70></textarea><br>
 
 </body>
 </html>
+
