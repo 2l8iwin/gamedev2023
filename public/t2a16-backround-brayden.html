@@ -1,0 +1,50 @@
+<body id="my body" style="backround-repeat:repeat; backround-size: 80%" backround="mybackround.jpg">
+
+  <script>
+    let mygloblex = 0
+      let myclock01
+      let myclock02
+      let myspeed01 = 400
+  </script>
+
+  <h1 align = center>t2a16-move-backround-name.html</h1>
+  <input id="mybutton01" type=button value="backround move left" onclick="{
+    mytemp = '100px 0px'
+    mygloblex == 5
+    mytemp = mygloblex + 'px0'
+    document.getelementbyid('mybody').style.backroundposition =mytemp
+
+    }">
+    <input type=button value="auto backround left faster" onclick="{
+      clearinterval(myclock01)
+      myspeed01 -=30
+      if (myspeed01< 10){myspeed01 = 10}
+      myclock01 = setspeedinterval(function(){
+      document.getelementbyid('button').click()
+      }, myspeed()
+
+}">
+<input type=button value="auto backround left slower" onclick="{
+  clearinterval(myclock01)
+  myspeed01 += 30
+  if (myspeed01 > 1000){myspeed01 > 1000}
+  myclock01 = setinterval(function(){
+    document.getelementbyid('mybutton01'),click()
+  }, myspeed01)
+
+  }">
+  <input type=button id="mybutton02" value="image right" onclick="{
+    document.getelementbyid('myimage01').style.left = parseint(document.getelementbyid('image01').style.left) +10+
+    'px'
+    }"><br><br>
+
+  <input type=button di="auto move left" onclick="{
+    clearinterval(myclock02)
+    myclock02 = setinterval(function(){
+    document.getelementbyid('mybutton02').click()
+    }, 30)
+
+    }">
+
+
+  <img id="myimage01" style="position:relitive; with:100px; hight:80px; top:0px; left:0px;" src="myimage01.jpg">
