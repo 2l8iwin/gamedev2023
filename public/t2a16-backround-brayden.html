@@ -1,50 +1,65 @@
-<body id="my body" style="backround-repeat:repeat; backround-size: 80%" backround="mybackround.jpg">
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>t2a16-move-background-name.html</title>
+  <style>
+    body {
+      background-repeat: repeat;
+      background-size: 80%;
+      background-image: url('mybackground.jpg'); /* Replace 'mybackground.jpg' with the path to your background image */
+    }
+  </style>
   <script>
-    let mygloblex = 0
-      let myclock01
-      let myclock02
-      let myspeed01 = 400
+    let mygloblex = 0;
+    let myclock01;
+    let myclock02;
+    let myspeed01 = 400;
   </script>
+</head>
+<body id="mybody">
 
-  <h1 align = center>t2a16-move-backround-name.html</h1>
-  <input id="mybutton01" type=button value="backround move left" onclick="{
-    mytemp = '100px 0px'
-    mygloblex == 5
-    mytemp = mygloblex + 'px0'
-    document.getelementbyid('mybody').style.backroundposition =mytemp
+  <h1 style="text-align: center;">t2a16-move-background-name.html</h1>
 
-    }">
-    <input type=button value="auto backround left faster" onclick="{
-      clearinterval(myclock01)
-      myspeed01 -=30
-      if (myspeed01< 10){myspeed01 = 10}
-      myclock01 = setspeedinterval(function(){
-      document.getelementbyid('button').click()
-      }, myspeed()
-
-}">
-<input type=button value="auto backround left slower" onclick="{
-  clearinterval(myclock01)
-  myspeed01 += 30
-  if (myspeed01 > 1000){myspeed01 > 1000}
-  myclock01 = setinterval(function(){
-    document.getelementbyid('mybutton01'),click()
-  }, myspeed01)
-
+  <input id="mybutton01" type="button" value="background move left" onclick="{
+    mygloblex += 5;
+    let mytemp = mygloblex + 'px 0';
+    document.getElementById('mybody').style.backgroundPosition = mytemp;
   }">
-  <input type=button id="mybutton02" value="image right" onclick="{
-    document.getelementbyid('myimage01').style.left = parseint(document.getelementbyid('image01').style.left) +10+
-    'px'
-    }"><br><br>
 
-  <input type=button di="auto move left" onclick="{
-    clearinterval(myclock02)
-    myclock02 = setinterval(function(){
-    document.getelementbyid('mybutton02').click()
-    }, 30)
+  <input type="button" value="auto background left faster" onclick="{
+    clearInterval(myclock01);
+    myspeed01 -= 30;
+    if (myspeed01 < 10) { myspeed01 = 10; }
+    myclock01 = setInterval(function(){
+      document.getElementById('mybutton01').click();
+    }, myspeed01);
+  }">
 
-    }">
+  <input type="button" value="auto background left slower" onclick="{
+    clearInterval(myclock01);
+    myspeed01 += 30;
+    if (myspeed01 > 1000) { myspeed01 = 1000; }
+    myclock01 = setInterval(function(){
+      document.getElementById('mybutton01').click();
+    }, myspeed01);
+  }">
 
+  <input id="mybutton02" type="button" value="image right" onclick="{
+    let myimage = document.getElementById('myimage01');
+    myimage.style.left = parseInt(myimage.style.left) + 10 + 'px';
+  }"><br><br>
 
-  <img id="myimage01" style="position:relitive; with:100px; hight:80px; top:0px; left:0px;" src="myimage01.jpg">
+  <input type="button" id="autoMoveLeft" value="auto move left" onclick="{
+    clearInterval(myclock02);
+    myclock02 = setInterval(function(){
+      document.getElementById('mybutton02').click();
+    }, 30);
+  }">
+
+  <img id="myimage01" style="position:relative; width:100px; height:80px; top:0px; left:0px;" src="myimage01.jpg" alt="Textbox Picture">
+
+</body>
+</html>
