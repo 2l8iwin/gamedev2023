@@ -1,0 +1,4 @@
+onclick <start loop> start=0
+for(x=0;x<3;x++){
+b=['brayden','tom','peter']
+if b=1 print 'wow'
