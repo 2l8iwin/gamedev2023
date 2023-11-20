@@ -71,6 +71,39 @@
         moveImageRight();
       }, 30);
     }
+
+    // Add event listener for arrow key presses
+    document.addEventListener('keydown', function(event) {
+      switch(event.key) {
+        case 'ArrowLeft':
+          moveImageLeft();
+          break;
+        case 'ArrowRight':
+          moveImageRight();
+          break;
+        case 'ArrowUp':
+          moveImageUp();
+          break;
+        case 'ArrowDown':
+          moveImageDown();
+          break;
+      }
+    });
+
+    function moveImageLeft() {
+      let myimage = document.getElementById('myimage01');
+      myimage.style.left = parseInt(myimage.style.left) - 10 + 'px';
+    }
+
+    function moveImageUp() {
+      let myimage = document.getElementById('myimage01');
+      myimage.style.top = parseInt(myimage.style.top) - 10 + 'px';
+    }
+
+    function moveImageDown() {
+      let myimage = document.getElementById('myimage01');
+      myimage.style.top = parseInt(myimage.style.top) + 10 + 'px';
+    }
   </script>
 
 </body>
