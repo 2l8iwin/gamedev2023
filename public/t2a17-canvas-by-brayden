@@ -1,0 +1,47 @@
+<h2 align=center>t2a17-canvas-by-brayden</h2>
+you use loop and variables to make fast and fancy drawings <br><br>
+
+<input type=button value" for loop .lineto(30,200)" onclick"{
+mycontext.beginpath();
+mycontext.linewith = 1;
+mycontext.moveto(20,10);
+for (i=0;i<20; i++){
+mycontext.moveto(1*2,10*i);
+mycontext.lineto(1*3,20);
+}
+mycontext.stroke();
+}">
+<input type=button value=".fillrect(30,20, 50, 40)"onclick="{
+mycontext.beginpath();
+mycontext.linewith = 1;
+mycontext.fillrect(30,20, 54, 40)'
+mycontext.stroke();
+}">
+
+<input type=button value=".arc(95,50, 40, 0, 2 * math.pi)"onclick="{
+mycontext.beginpath();
+mycontext.linewith = 10;
+mycotext.strokestyle = green
+mycontext.fillrect(30,20, 54, 40)'
+mycontext.stroke();
+}">
+
+<input type=button value=".filltext('hello world', 400, 100)onclick="{
+mycontext.font =  '20px arial';
+mycontext.filltext('hello world', 400, 100);
+mycontext.translate(400, 100);
+mycontext.rotate(60 * math.pi / 180);
+mycontext.filltext('hello world', 10, 10);
+mycontext.stroke();
+mycontext.resettranceform();
+//mycontext.rotate(-60 *math.pi / 180);
+}">
+
+<input type=button value=".quadricurveto(100,220,240,110);
+mycontext.beginpath();
+mycontext.moveto(300,100);
+mycontext.quadiccurveto(100,220,240,110)
+mycontext.stroke();
+
+}">
+<input type=button value=".createlineargradient(100, 300, 200, 400)"onclick="{
