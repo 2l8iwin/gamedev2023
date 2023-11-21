@@ -13,6 +13,9 @@
     
     function displayNames() {
         for (var i = 0; i < namesArray.length; i++) {
+            if (namesArray[i].toLowerCase() === "fred") {
+                document.getElementById("mydiv01").innerHTML += "wow<br>";
+            }
             document.getElementById("mydiv01").innerHTML += namesArray[i] + "<br>";
             if (namesArray[i].toLowerCase() === "fred") {
                 document.getElementById("mydiv01").innerHTML += "wow<br>";
@@ -22,11 +25,6 @@
 </script>
 
 <button onclick="displayNames()">Display Names</button>
-
-<div id="mydiv01"></div>
-
-</body>
-</html>
 
 <div id="mydiv01"></div>
 
