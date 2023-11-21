@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,8 +16,7 @@
     myContext.lineWidth = 1;
     myContext.moveTo(20, 10);
     for (let i = 0; i < 20; i++) {
-        myContext.moveTo(1 * 2, 10 * i);
-        myContext.lineTo(1 * 3, 20);
+        myContext.lineTo(1 * 2, 10 * i);
     }
     myContext.stroke();
 }">
@@ -26,20 +24,8 @@
 <input type="button" value=".fillrect(30,20, 50, 40)" onclick="{
     let myCanvas = document.getElementById('myCoolTag');
     let myContext = myCanvas.getContext('2d');
-    myContext.beginPath();
-    myContext.lineWidth = 1;
+    myContext.fillStyle = 'blue';
     myContext.fillRect(30, 20, 50, 40);
-    myContext.stroke();
-}">
-
-<input type="button" value=".arc(95,50, 40, 0, 2 * Math.PI)" onclick="{
-    let myCanvas = document.getElementById('myCoolTag');
-    let myContext = myCanvas.getContext('2d');
-    myContext.beginPath();
-    myContext.lineWidth = 10;
-    myContext.strokeStyle = 'green';
-    myContext.arc(95, 50, 40, 0, 2 * Math.PI);
-    myContext.stroke();
 }">
 
 <input type="button" value=".filltext('hello world', 400, 100)" onclick="{
@@ -47,20 +33,6 @@
     let myContext = myCanvas.getContext('2d');
     myContext.font = '20px Arial';
     myContext.fillText('hello world', 400, 100);
-    myContext.translate(400, 100);
-    myContext.rotate(60 * Math.PI / 180);
-    myContext.fillText('hello world', 10, 10);
-    myContext.stroke();
-    myContext.setTransform(1, 0, 0, 1, 0, 0); // reset transform
-}">
-
-<input type="button" value=".quadricurveto(100,220,240,110)" onclick="{
-    let myCanvas = document.getElementById('myCoolTag');
-    let myContext = myCanvas.getContext('2d');
-    myContext.beginPath();
-    myContext.moveTo(300, 100);
-    myContext.quadraticCurveTo(100, 220, 240, 110);
-    myContext.stroke();
 }">
 
 <input type="button" value=".createlineargradient(100, 300, 200, 400)" onclick="{
@@ -72,10 +44,10 @@
     myGradient.addColorStop(1, 'yellow');
     myContext.fillStyle = myGradient;
     myContext.fillRect(100, 300, 200, 400);
-    myContext.fillStyle = 'black'; // reset fill style
+    myContext.fillStyle = 'black';
 }"><br><br>
 
-<input type="button" value="clearRect(20, 20, 58, 50, 50)" onclick="{
+<input type="button" value="clearRect(20, 20, 50, 50)" onclick="{
     let myCanvas = document.getElementById('myCoolTag');
     let myContext = myCanvas.getContext('2d');
     myContext.clearRect(20, 20, 50, 50);
