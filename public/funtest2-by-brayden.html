@@ -1,0 +1,41 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Loop Example</title>
+</head>
+<body>
+
+<!-- 1. Heading -->
+<h1>Array Loop Example</h1>
+
+<!-- 2. Script tag defining an array -->
+<script>
+    var namesArray = ["tom", "brayden", "mary"];
+    
+    // 5. The code to be triggered on button click
+    function displayNames() {
+        // 5a. Loop through the array
+        for (var i = 0; i < namesArray.length; i++) {
+            // 5b. Print each name to the div with id="mydiv01"
+            document.getElementById("mydiv01").innerHTML += namesArray[i] + "<br>";
+
+            // 5c. If the name is "brayden", print "wow"
+            if (namesArray[i].toLowerCase() === "brayden") {
+                document.getElementById("mydiv01").innerHTML += "Wow<br>";
+            }
+        }
+
+        // Adding my name to the page
+        document.getElementById("mydiv01").innerHTML += "<br>Created by ChatGPT";
+    }
+</script>
+
+<!-- 3. Button with onclick event -->
+<button onclick="displayNames()">Display Names</button>
+
+<!-- 4. Div tag with id="mydiv01" -->
+<div id="mydiv01"></div>
+
+</body>
+</html>
