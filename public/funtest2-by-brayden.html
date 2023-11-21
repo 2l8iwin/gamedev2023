@@ -14,11 +14,9 @@
     function displayNames() {
         for (var i = 0; i < namesArray.length; i++) {
             if (namesArray[i].toLowerCase() === "fred") {
-                document.getElementById("mydiv01").innerHTML += "wow<br>";
-            }
-            document.getElementById("mydiv01").innerHTML += namesArray[i] + "<br>";
-            if (namesArray[i].toLowerCase() === "fred") {
-                document.getElementById("mydiv01").innerHTML += "wow<br>";
+                document.getElementById("mydiv01").innerHTML += namesArray[i] + " wow<br>";
+            } else {
+                document.getElementById("mydiv01").innerHTML += namesArray[i] + "<br>";
             }
         }
     }
@@ -30,3 +28,4 @@
 
 </body>
 </html>
+
