@@ -11,7 +11,7 @@
 <script>
     var namesArray = ["tom", "brayden", "mary"];
     
-    function displayNames() 
+    function displayNames() {
         for (var i = 0; i < namesArray.length; i++) {
             document.getElementById("mydiv01").innerHTML += namesArray[i] + "<br>";
             if (namesArray[i].toLowerCase() === "brayden") {
@@ -22,6 +22,11 @@
 </script>
 
 <button onclick="displayNames()">Display Names</button>
+
+<div id="mydiv01"></div>
+
+</body>
+</html>
 
 <div id="mydiv01"></div>
 
