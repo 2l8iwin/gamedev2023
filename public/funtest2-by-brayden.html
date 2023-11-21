@@ -9,13 +9,13 @@
 <h1>Array Loop Example</h1>
 
 <script>
-    var namesArray = ["tom", "brayden", "mary"];
+    var namesArray = ["tom", "fred", "mary"];
     
     function displayNames() {
         for (var i = 0; i < namesArray.length; i++) {
             document.getElementById("mydiv01").innerHTML += namesArray[i] + "<br>";
-            if (namesArray[i].toLowerCase() === "brayden") {
-                document.getElementById("mydiv01").innerHTML += "Wow<br>";
+            if (namesArray[i].toLowerCase() === "fred") {
+                document.getElementById("mydiv01").innerHTML += "<br>wow";
             }
         }
     }
