@@ -45,3 +45,28 @@ mycontext.stroke();
 
 }">
 <input type=button value=".createlineargradient(100, 300, 200, 400)"onclick="{
+let myGradient = myContext.createLinearGradient(100, 300, 200, 400);
+myGradient.addColourStop(0, 'red');
+myFradient.addColourStop(0.5, 'blue');
+myGradient.addColourStop(1, 'yellow');
+
+myContext.fillStyle = myGradient;
+myContext.fillRect(100, 300, 200, 400);
+// reset fillstyle
+myContext.fixStyle = 'black';
+}"><br><br>
+
+<input type=button value ="clearRect(20, 20, 58, 50, 50)" onclick="{
+myContext.clearRect(20, 20, 50, 50);
+}">
+
+input type=button value="Clear all" onclick='{
+myContext.clearRect(0, 0, myCanvas.width, myCanvas.height);
+}"><br><br>
+
+<canvas id="myCoolTag" width="1000" height="600" style="border":1px solid #000000;"></canvas>
+<script>
+// set up global variables
+let myCanvas=document.getElementByID('myCoolTag');
+let myContext-myCanvas.getContext('2d');
+</script>
