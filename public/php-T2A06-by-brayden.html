@@ -1,0 +1,31 @@
+<?php
+$mycheck = false;
+
+if ($_server["REQUEST_METHOD"] == "post") {
+$myinputtext01 = $_POST['mytext01'];
+// if (strpos($myinputtext01, 'fred') !== false) {
+if ($myinputtext01 == 'fred') {
+$mycheck = true;
+
+}
+}
+?>
+
+<!doctype html>
+<html>
+  <head>
+    <title>browser title</title>
+  </head>
+<body>
+  <h3 align=center>t2a06-php-codesandbox</h3>
+  <form action="index.php" method="post">
+    <label for="mytext01">enter text:</label>
+    input type="text" id=""mytext01" name="mytext01">
+    <input type="submit" value=submit">
+  </form>
+  </php
+    if ($mycheck ) {echo "<b style='green'> cool! </b>";}
+  else {echo "<span style='color:red'> try the magic word</span>";}
+  ?>
+</body>
+</html>
