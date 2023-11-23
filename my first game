@@ -1,8 +1,9 @@
 import random
 
 class Gun:
-    def __init__(self, bullets):
+    def __init__(self, bullets, max_life):
         self.bullets = bullets
+        self.life = max_life
 
     def shoot(self):
         if self.bullets > 0:
@@ -10,6 +11,7 @@ class Gun:
             self.bullets -= 1
         else:
             print("Click! Out of bullets.")
+            self.take_damage()
 
     def reload(self, bullets_to_reload):
         print(f"Reloading {bullets_to_reload} bullets.")
@@ -20,10 +22,16 @@ class Gun:
 
     def explode(self):
         print("💥💥💥 The bullet exploded on impact!")
+        self.take_damage()
+
+    def take_damage(self):
+        self.life -= 1
+        print(f"Ouch! Your remaining life: {self.life}")
 
 def play_shooting_game():
     rounds = 10
-    gun = Gun(bullets=rounds)
+    max_life = 3  # Set your life cap
+    gun = Gun(bullets=rounds, max_life=max_life)
 
     for _ in range(rounds):
         print("\nRound", _ + 1)
@@ -47,14 +55,22 @@ def play_shooting_game():
             enemy_action = random.choice(['s', 'r'])
             if enemy_action == 's':
                 print("Enemy shot at you!")
+                gun.take_damage()
             else:
                 print("You found extra bullets!")
                 gun.reload(random.randint(1, 6))
 
-    print("\nGame over! You survived.")
+        # Check if the player is still alive
+        if gun.life <= 0:
+            print("\nGame over! You ran out of lives.")
+            break
+
+    if gun.life > 0:
+        print("\nGame over! You survived.")
 
 # Run the game
 play_shooting_game()
+
 
 link to play
 https://replit.com/@braydensears2/PrettyGhostwhiteMarkuplanguage
