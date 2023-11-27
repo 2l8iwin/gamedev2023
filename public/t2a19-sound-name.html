@@ -9,19 +9,17 @@
 
 <button onclick="playJumpSound()">Play Jump Sound</button>
 <button onclick="playCoinSound()">Play Coin Sound</button>
-<button onclick="playPowerUpSound()">Play Power-Up Sound</button>
+<button onclick="playSuperStarSound()">Play Super Star Sound</button>
 <button onclick="play1UpSound()">Play 1-Up Sound</button>
 <button onclick="playGameOverSound()">Play Game Over Sound</button>
 
 <audio id="jumpSound" src="https://www.myinstants.com/media/sounds/mario-jump.mp3" type="audio/mpeg"></audio>
 <audio id="coinSound" src="https://www.myinstants.com/media/sounds/coin.mp3" type="audio/mpeg"></audio>
-<audio id="powerUpSound" src="https://www.myinstants.com/media/sounds/mario-powerup.mp3" type="audio/mpeg"></audio>
+<audio id="superStarSound" src="https://www.myinstants.com/media/sounds/mario-super-star.mp3" type="audio/mpeg"></audio>
 <audio id="1UpSound" src="https://www.myinstants.com/media/sounds/mario-1up.mp3" type="audio/mpeg"></audio>
 <audio id="gameOverSound" src="https://www.myinstants.com/media/sounds/mario-game-over.mp3" type="audio/mpeg"></audio>
 
 <script>
-    let mysound01 = new Audio('yeh.m4a');
-
     function playJumpSound() {
         var audio = document.getElementById('jumpSound');
         audio.play();
@@ -32,8 +30,8 @@
         audio.play();
     }
 
-    function playPowerUpSound() {
-        var audio = document.getElementById('powerUpSound');
+    function playSuperStarSound() {
+        var audio = document.getElementById('superStarSound');
         audio.play();
     }
 
@@ -50,5 +48,6 @@
 
 </body>
 </html>
+
 
 
