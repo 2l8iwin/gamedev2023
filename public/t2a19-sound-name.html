@@ -7,20 +7,36 @@
 
   }">
 
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mario Jump Sound</title>
+    <title>Sound Effects</title>
 </head>
 <body>
 
-<button onclick="playMarioJump()">Play Mario Jump Sound</button>
+<button onclick="playJumpSound()">Play Jump Sound</button>
+<button onclick="playCoinSound()">Play Coin Sound</button>
+<button onclick="playPowerUpSound()">Play Power-Up Sound</button>
 
-<audio id="marioJumpAudio" src="https://www.myinstants.com/media/sounds/mario-jump.mp3" type="audio/mpeg"></audio>
+<audio id="jumpSound" src="https://www.myinstants.com/media/sounds/mario-jump.mp3" type="audio/mpeg"></audio>
+<audio id="coinSound" src="https://www.myinstants.com/media/sounds/coin.mp3" type="audio/mpeg"></audio>
+<audio id="powerUpSound" src="https://www.myinstants.com/media/sounds/mario-powerup.mp3" type="audio/mpeg"></audio>
 
 <script>
-    function playMarioJump() {
-        var audio = document.getElementById('marioJumpAudio');
+    function playJumpSound() {
+        var audio = document.getElementById('jumpSound');
+        audio.play();
+    }
+
+    function playCoinSound() {
+        var audio = document.getElementById('coinSound');
+        audio.play();
+    }
+
+    function playPowerUpSound() {
+        var audio = document.getElementById('powerUpSound');
         audio.play();
     }
 </script>
@@ -28,26 +44,6 @@
 </body>
 </html>
 
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coin Sound</title>
-</head>
-<body>
-
-<button onclick="playCoinSound()">Play Coin Sound</button>
-
-<audio id="coinSound" src="https://www.myinstants.com/media/sounds/coin.mp3" type="audio/mpeg"></audio>
-
-<script>
-    function playCoinSound() {
-        var audio = document.getElementById('coinSound');
-        audio.play();
-    }
-</script>
 
 </body>
 </html>
