@@ -28,3 +28,28 @@
 </body>
 </html>
 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coin Sound</title>
+</head>
+<body>
+
+<button onclick="playCoinSound()">Play Coin Sound</button>
+
+<audio id="coinSound" src="https://www.myinstants.com/media/sounds/coin.mp3" type="audio/mpeg"></audio>
+
+<script>
+    function playCoinSound() {
+        var audio = document.getElementById('coinSound');
+        audio.play();
+    }
+</script>
+
+</body>
+</html>
+
+
