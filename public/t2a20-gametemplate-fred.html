@@ -1,69 +1,61 @@
-<body id="mybody" style="backround-repeat:repeat; backround-size: 80%" backround="mybackground01.jpg">
+<body id="mybody" style="background-repeat: repeat; background-size: 80%" background="mybackground01.jpg">
 
-<h1 align=center>t2a20-gametemplate-fred.html
-  <br><br><br><br>
+<h1 align="center">t2a20-gametemplate-fred.html</h1><br><br><br><br>
 
-  <script>
-// global variables here
+<script>
+    // global variables here
     let myglobalx = 0
     let myclock
 
     // global functions here
-    function myhitother(my 1,my 2){
-      left1 = parseint(document.getelementbyid(my1).style.left)
-      right1 = left1 + parseint(document.getelementbyid(my1).style.width)
-      top1 = parseint(document.getelementbyid(my1).style.top)
-      bottom1 = top1 + parseint(document.getelementbyid(my1).style.height)
-        left2 = parseint(document.getelementbyid(my1).style.left)
-      right2 = left2 + parseint(document.getelementbyid(my1).style.width)
-      top2 = parseint(document.getelementbyid(my1).style.top)
-      bottom2 = top2 + parseint(document.getelementbyid(my1).style.height)
-      if ((right1 >= left2  ) &&
-          (bottom1 >= top2  ) &&
-          (left2 <= right1  ) &&
-          (top2 <= bottom1  ) &&
-          return true
-    }
+    function myhitother(my1, my2) {
+        left1 = parseInt(document.getElementById(my1).style.left);
+        right1 = left1 + parseInt(document.getElementById(my1).style.width);
+        top1 = parseInt(document.getElementById(my1).style.top);
+        bottom1 = top1 + parseInt(document.getElementById(my1).style.height);
+        left2 = parseInt(document.getElementById(my2).style.left);
+        right2 = left2 + parseInt(document.getElementById(my2).style.width);
+        top2 = parseInt(document.getElementById(my2).style.top);
+        bottom2 = top2 + parseInt(document.getElementById(my2).style.height);
+        return (right1 >= left2) &&
+            (bottom1 >= top2) &&
+            (left2 <= right1) &&
+            (top2 <= bottom1);
     }
 
-    function mycheckhit(){
-      if (myhitother('myimg01','myimg02' ) ){
-        alert('you loose 2')
-        //document.getelementbyid('myimg01').style.left = '20px'
-        location = 'http://www.google.ca'
+    function mycheckhit() {
+        if (myhitother('myimg01', 'myimg02')) {
+            alert('you lose 2');
+            // document.getElementById('myimg01').style.left = '20px';
+            window.location.href = 'http://www.google.ca';
+        }
 
-      }
-
-      if ( myhitother('myimg03') ){
-        alert('you loose 3')
-        //document.getelemenetbyid('myimg01').style.left = '20px'
-
-      }
-      //if more statements here
+        if (myhitother('myimg01', 'myimg03')) {
+            alert('you lose 3');
+            // document.getElementById('myimg01').style.left = '20px';
+        }
+        // if more statements here
     }
-  </script>
+</script>
 
-  <img id="myimg01" style="position:absolute; whidth:100px; height:80px; top:0px; left:50px;"
-    src="myimg01.jpg">
-      <img id="myimg02" style="position:absolute; whidth:100px; height:80px; top:0px; left:250px;"
-    src="myimg02.jpg">
-      <img id="myimg03" style="position:absolute; whidth:100px; height:80px; top:0px; left:500px;"
-    src="myimg02.jpg">
+<img id="myimg01" style="position: absolute; width: 100px; height: 80px; top: 0px; left: 50px;" src="myimg01.jpg">
+<img id="myimg02" style="position: absolute; width: 100px; height: 80px; top: 0px; left: 250px;" src="myimg02.jpg">
+<img id="myimg03" style="position: absolute; width: 100px; height: 80px; top: 0px; left: 500px;" src="myimg02.jpg">
 
-  <input type=button value="auto backrouund left" onclick="{
-    clear interval(myclock)
-    let mytemp = '100px 0px'
-    myclock = setinterval(function(){
-    mygloblex -= 5
-    mytemp =  myglobalx + 'px 0px
-    document.getelemenetbyid('mybody').style.backroundposition = mytemp
-    }, 10)
+<input type="button" value="auto background left" onclick="{
+    clearInterval(myclock);
+    let mytemp = '100px 0px';
+    myclock = setInterval(function(){
+        myglobalx -= 5;
+        mytemp = myglobalx + 'px 0px';
+        document.getElementById('mybody').style.backgroundPosition = mytemp;
+    }, 10);
+}">
 
-    }">
+<input type="button" value="image right fast button ontouchstart" ontouchstart="{this.click(); event.preventDefault();}"
+    onclick="{
+        document.getElementById('myimg01').style.left = parseInt(document.getElementById('myimg01').style.left) +
+            10 + 'px';
+        mycheckhit(); // checks for all collisions
+    }"><br><br>
 
-  <input type=button value="image right fast button ontouchstart"="{this.click(); event.preventdefalt();}"
-  onclick="{
-  document.getelementbyid('myimg01).style.left = parseint (document.getelementbyid('myimg01).style.left) +
-  10 + 'px'
-  mycheckhit()     //checks for all collisions
-  }"><br><br>
