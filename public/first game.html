@@ -1,0 +1,87 @@
+import pygame
+import sys
+import random
+
+# Initialize Pygame
+pygame.init()
+
+# Constants
+WIDTH, HEIGHT = 800, 600
+FPS = 60
+
+# Colors
+WHITE = (255, 255, 255)
+BLACK = (0, 0, 0)
+
+# Create the screen
+screen = pygame.display.set_mode((WIDTH, HEIGHT))
+pygame.display.set_caption("2D RPG")
+
+# Clock for controlling the frame rate
+clock = pygame.time.Clock()
+
+class Character(pygame.sprite.Sprite):
+    def __init__(self, name, health, attack, defense):
+        super().__init__()
+        self.image = pygame.Surface((50, 50))
+        self.image.fill(BLACK)
+        self.rect = self.image.get_rect()
+        self.name = name
+        self.health = health
+        self.attack = attack
+        self.defense = defense
+
+    def take_damage(self, damage):
+        self.health -= damage
+        if self.health < 0:
+            self.health = 0
+
+    def attack_enemy(self, enemy):
+        damage = max(0, self.attack - enemy.defense)
+        enemy.take_damage(damage)
+        return damage
+
+# Create player and enemy sprites
+player = Character("Player", 100, 20, 10)
+enemy = Character("Enemy", 50, 15, 5)
+all_sprites = pygame.sprite.Group(player, enemy)
+
+# Set initial player position
+player.rect.x = WIDTH // 2
+player.rect.y = HEIGHT // 2
+
+# Game loop
+running = True
+while running:
+    # Handle events
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+
+    # Handle player movement
+    keys = pygame.key.get_pressed()
+    if keys[pygame.K_w]:
+        player.rect.y -= 5
+    if keys[pygame.K_s]:
+        player.rect.y += 5
+    if keys[pygame.K_a]:
+        player.rect.x -= 5
+    if keys[pygame.K_d]:
+        player.rect.x += 5
+
+    # Update game logic here
+
+    # Draw everything
+    screen.fill(WHITE)
+    all_sprites.draw(screen)
+
+    # Flip the display
+    pygame.display.flip()
+
+    # Cap the frame rate
+    clock.tick(FPS)
+
+# Quit Pygame
+pygame.quit()
+sys.exit()
+
