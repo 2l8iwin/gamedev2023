@@ -1,6 +1,6 @@
 import pygame
 import sys
-import random
+import math
 
 # Initialize Pygame
 pygame.init()
@@ -12,6 +12,8 @@ FPS = 60
 # Colors
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
+GREEN = (0, 255, 0)
+RED = (255, 0, 0)  # Added definition for the RED color
 
 # Create the screen
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
@@ -21,10 +23,10 @@ pygame.display.set_caption("2D RPG")
 clock = pygame.time.Clock()
 
 class Character(pygame.sprite.Sprite):
-    def __init__(self, name, health, attack, defense):
+    def __init__(self, name, health, attack, defense, color):
         super().__init__()
         self.image = pygame.Surface((50, 50))
-        self.image.fill(BLACK)
+        self.image.fill(color)
         self.rect = self.image.get_rect()
         self.name = name
         self.health = health
@@ -41,24 +43,59 @@ class Character(pygame.sprite.Sprite):
         enemy.take_damage(damage)
         return damage
 
+class Gun(pygame.sprite.Sprite):
+    def __init__(self, owner):
+        super().__init__()
+        self.image = pygame.Surface((20, 10))
+        self.image.fill(BLACK)  # Gun color (black)
+        self.rect = self.image.get_rect()
+        self.owner = owner
+        self.bullets = pygame.sprite.Group()
+
+    def shoot(self):
+        bullet = Bullet(self.rect.midright, self.owner)  # Adjust the starting position
+        self.bullets.add(bullet)
+
+    def update(self):
+        mouse_x, mouse_y = pygame.mouse.get_pos()
+        angle = math.degrees(math.atan2(mouse_y - self.rect.centery, mouse_x - self.rect.centerx))
+        self.image = pygame.Surface((20, 10))
+        self.image.fill(BLACK)
+        self.image = pygame.transform.rotate(self.image, -angle)
+        self.rect = self.image.get_rect(center=self.owner.rect.center)
+        self.bullets.update()
+
+class Bullet(pygame.sprite.Sprite):
+    def __init__(self, position, owner):
+        super().__init__()
+        self.image = pygame.Surface((5, 5))
+        self.image.fill((0, 0, 255))  # Bullet color (blue)
+        self.rect = self.image.get_rect()
+        self.rect.topleft = position  # Set the initial position
+        self.owner = owner
+
+    def update(self):
+        self.rect.x += 5  # Move the bullet to the right
+
 # Create player and enemy sprites
-player = Character("Player", 100, 20, 10)
-enemy = Character("Enemy", 50, 15, 5)
+player = Character("Player", 100, 20, 10, GREEN)
+enemy = Character("Enemy", 50, 15, 5, RED)
 all_sprites = pygame.sprite.Group(player, enemy)
 
-# Set initial player position
-player.rect.x = WIDTH // 2
-player.rect.y = HEIGHT // 2
+# Create the player's gun
+player_gun = Gun(player)
+all_sprites.add(player_gun)
 
 # Game loop
 running = True
 while running:
-    # Handle events
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_SPACE:
+                player_gun.shoot()
 
-    # Handle player movement
     keys = pygame.key.get_pressed()
     if keys[pygame.K_w]:
         player.rect.y -= 5
@@ -69,7 +106,7 @@ while running:
     if keys[pygame.K_d]:
         player.rect.x += 5
 
-    # Update game logic here
+    all_sprites.update()
 
     # Draw everything
     screen.fill(WHITE)
@@ -81,7 +118,8 @@ while running:
     # Cap the frame rate
     clock.tick(FPS)
 
-# Quit Pygame
 pygame.quit()
+sys.exit()
+
 sys.exit()
 
