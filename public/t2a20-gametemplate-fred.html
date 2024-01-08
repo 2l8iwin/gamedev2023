@@ -1,4 +1,3 @@
-User
 <body id="mybody" style="background-repeat: repeat; background-size: 80%" background="mybackground01.jpg">
 
 <h1 align="center">t2a20-gametemplate-fred.html</h1><br><br><br><br>
@@ -27,21 +26,38 @@ User
     function mycheckhit() {
         if (myhitother('myimg01', 'myimg02')) {
             alert('you lose 2');
-            // document.getElementById('myimg01').style.left = '20px';
             window.location.href = 'http://www.google.ca';
         }
 
         if (myhitother('myimg01', 'myimg03')) {
             alert('you lose 3');
-            // document.getElementById('myimg01').style.left = '20px';
         }
-        // if more statements here
+
+        // Additional collision checks for new images
+        if (myhitother('myimg01', 'myimg04')) {
+            alert('you lose 4');
+        }
+
+        if (myhitother('myimg01', 'myimg05')) {
+            alert('you lose 5');
+        }
+
+        if (myhitother('myimg01', 'myimg06')) {
+            alert('you lose 6');
+        }
     }
 </script>
 
-<img id="myimg01" style="position: absolute; width: 100px; height: 80px; top: 0px; left: 50px;" src="images/image1.jpg"> "C:\Users\1306318\OneDrive - Mission Public School District\Desktop\images\image1.jpg.jpg"
-<img id="myimg02" style="position: absolute; width: 100px; height: 80px; top: 0px; left: 250px;" src="images/image2.jpg"> "C:\Users\1306318\OneDrive - Mission Public School District\Desktop\images\c4ca641a-0127-4f84-b83f-354883b5b4b4.jpg"
-<img id="myimg03" style="position: absolute; width: 100px; height: 80px; top: 0px; left: 500px;" src="images/image3.jpg"> "C:\Users\1306318\OneDrive - Mission Public School District\Desktop\images\image2.jpg.jpg"
+<img id="myimg01" style="position: absolute; width: 100px; height: 80px; top: 0px; left: 50px;" src="images/image1.jpg">
+<img id="myimg02" style="position: absolute; width: 100px; height: 80px; top: 0px; left: 250px;" src="images/image2.jpg">
+<img id="myimg03" style="position: absolute; width: 100px; height: 80px; top: 0px; left: 500px;" src="images/image3.jpg">
+<img id="myimg04" style="position: absolute; width: 100px; height: 80px; top: 0px; left: 750px;" src="images/image4.jpg">
+<img id="myimg05" style="position: absolute; width: 100px; height: 80px; top: 0px; left: 1000px;" src="images/image5.jpg">
+<img id="myimg06" style="position: absolute; width: 100px; height: 80px; top: 0px; left: 1250px;" src="images/image6.jpg">
+
+<!-- Rest of your code remains unchanged -->
+
+</body>
 
 <input type="button" value="auto background left" onclick="{
     clearInterval(myclock);
