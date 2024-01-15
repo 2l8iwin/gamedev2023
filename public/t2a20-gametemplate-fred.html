@@ -74,22 +74,40 @@
             case 'down':
                 myglobaly += stepSize;
                 break;
+            case 'left':
+                myglobalx -= stepSize;
+                break;
+            case 'right':
+                myglobalx += stepSize;
+                break;
         }
 
         person.style.top = parseInt(person.style.top) + myglobaly + 'px';
+        person.style.left = parseInt(person.style.left) + myglobalx + 'px';
         mycheckhit(); // checks for all collisions
     }
+
+    document.addEventListener('keydown', function(event) {
+        switch(event.key) {
+            case 'w':
+                movePerson('up');
+                break;
+            case 'a':
+                movePerson('left');
+                break;
+            case 's':
+                movePerson('down');
+                break;
+            case 'd':
+                movePerson('right');
+                break;
+        }
+    });
 </script>
 
 <img id="myimg01" style="position: absolute; width: 100px; height: 80px; top: 200px; left: 50px;" src="image1.jpg.jpg">
 <img id="myimg02" style="position: absolute; width: 100px; height: 80px; top: 200px; left: 250px;" src="image2.jpg.jpg">
 <img id="myimg03" style="position: absolute; width: 100px; height: 80px; top: 200px; left: 500px;" src="c4ca641a-0127-4f84-b83f-354883b5b4b4.jpg">
-
-<input type="button" value="Start Moving Background" onclick="moveBackground()">
-<input type="button" value="Stop Moving Background" onclick="stopBackground()">
-
-<input type="button" value="Move Up" onclick="movePerson('up')">
-<input type="button" value="Move Down" onclick="movePerson('down')">
 
 </body>
 </html>
