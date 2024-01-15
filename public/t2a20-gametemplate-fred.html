@@ -3,26 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game Template</title>
+    <title>Maze Game</title>
     <style>
         body {
-            background-repeat: repeat;
+            background-repeat: no-repeat;
             background-size: 80%;
-            background-image: url('image2.jpg');
+            background-image: url('background.jpg');
+        }
+
+        .maze-wall {
+            position: absolute;
+            width: 100px;
+            height: 80px;
+            background-color: brown; /* Adjust color as needed */
         }
     </style>
 </head>
 <body id="mybody">
 
-<h1 align="center">t2a20-gametemplate-fred.html</h1><br><br><br><br>
+<h1 align="center">Maze Game</h1><br><br><br><br>
 
 <script>
-    // global variables here
     let myglobalx = 0;
     let myglobaly = 0;
     let myclock;
 
-    // global functions here
     function myhitother(my1, my2) {
         left1 = parseInt(document.getElementById(my1).style.left);
         right1 = left1 + parseInt(document.getElementById(my1).style.width);
@@ -39,21 +44,20 @@
     }
 
     function mycheckhit() {
-        if (myhitother('myimg01', 'myimg02') || myhitother('myimg01', 'myimg03')) {
+        // Check for collisions with walls or other obstacles
+        // Add more checks for new maze elements
+
+        // For simplicity, you can redirect to a game-over page on collision
+        if (myhitother('myimg01', 'wall1') || myhitother('myimg01', 'wall2')) {
             alert('Game Over!'); // You can customize the message
             window.location.href = 'http://www.google.ca';
         }
-
-        // Additional collision checks for new images
-        // ...
-
-        // Implement a function to stop the background movement if necessary
     }
 
     function moveBackground() {
         let mytemp = '0px 0px';
         myclock = setInterval(function () {
-            myglobalx += 0; // Adjust the speed as needed
+            myglobalx += 5; // Adjust the speed as needed
             mytemp = myglobalx + 'px ' + myglobaly + 'px';
             document.getElementById('mybody').style.backgroundPosition = mytemp;
         }, 10);
@@ -105,9 +109,16 @@
     });
 </script>
 
-<img id="myimg01" style="position: absolute; width: 100px; height: 80px; top: 200px; left: 50px;" src="image1.jpg.jpg">
-<img id="myimg02" style="position: absolute; width: 100px; height: 80px; top: 200px; left: 250px;" src="image2.jpg.jpg">
-<img id="myimg03" style="position: absolute; width: 100px; height: 80px; top: 200px; left: 500px;" src="c4ca641a-0127-4f84-b83f-354883b5b4b4.jpg">
+<!-- Player -->
+<img id="myimg01" style="position: absolute; width: 100px; height: 80px; top: 200px; left: 50px;" src="player.jpg">
+
+<!-- Maze Walls -->
+<div id="wall1" class="maze-wall" style="top: 100px; left: 200px;"></div>
+<div id="wall2" class="maze-wall" style="top: 300px; left: 400px;"></div>
+
+<!-- Buttons -->
+<input type="button" value="Start Moving Background" onclick="moveBackground()">
+<input type="button" value="Stop Moving Background" onclick="stopBackground()">
 
 </body>
 </html>
