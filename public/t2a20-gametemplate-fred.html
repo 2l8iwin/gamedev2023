@@ -1,11 +1,25 @@
-<body id="mybody" style="background-repeat: repeat; background-size: 80%" background="mybackground01.jpg">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Template</title>
+    <style>
+        body {
+            background-repeat: repeat;
+            background-size: 80%;
+        }
+    </style>
+</head>
+<body id="mybody">
 
 <h1 align="center">t2a20-gametemplate-fred.html</h1><br><br><br><br>
 
 <script>
     // global variables here
-    let myglobalx = 0
-    let myclock
+    let myglobalx = 0;
+    let myglobaly = 0;
+    let myclock;
 
     // global functions here
     function myhitother(my1, my2) {
@@ -24,47 +38,57 @@
     }
 
     function mycheckhit() {
-        if (myhitother('myimg01', 'myimg02')) {
-            alert('you lose 2');
+        if (myhitother('myimg01', 'myimg02') || myhitother('myimg01', 'myimg03')) {
+            alert('Game Over!'); // You can customize the message
             window.location.href = 'http://www.google.ca';
         }
 
-        if (myhitother('myimg01', 'myimg03')) {
-            alert('you lose 3');
-        }
-
         // Additional collision checks for new images
-        if (myhitother('myimg01', 'myimg04')) {
-            alert('you lose 4');
+        // ...
+
+        // Implement a function to stop the background movement if necessary
+    }
+
+    function moveBackground() {
+        let mytemp = '0px 0px';
+        myclock = setInterval(function () {
+            myglobalx += 5; // Adjust the speed as needed
+            mytemp = myglobalx + 'px ' + myglobaly + 'px';
+            document.getElementById('mybody').style.backgroundPosition = mytemp;
+        }, 10);
+    }
+
+    function stopBackground() {
+        clearInterval(myclock);
+    }
+
+    function movePerson(direction) {
+        let stepSize = 10; // Adjust the step size as needed
+        let person = document.getElementById('myimg01');
+
+        switch (direction) {
+            case 'up':
+                myglobaly -= stepSize;
+                break;
+            case 'down':
+                myglobaly += stepSize;
+                break;
         }
 
-        if (myhitother('myimg01', 'myimg05')) {
-            alert('you lose 5');
-        }
-
-        if (myhitother('myimg01', 'myimg06')) {
-            alert('you lose 6');
-        }
+        person.style.top = parseInt(person.style.top) + myglobaly + 'px';
+        mycheckhit(); // checks for all collisions
     }
 </script>
 
-<img id="myimg01" style="position: absolute; width: 100px; height: 80px; top: 0px; left: 50px;" src="image1.jpg.jpg">
-<img id="myimg02" style="position: absolute; width: 100px; height: 80px; top: 0px; left: 250px;" src="image2.jpg.jpg">
-<img id="myimg03" style="position: absolute; width: 100px; height: 80px; top: 0px; left: 500px;" src="c4ca641a-0127-4f84-b83f-354883b5b4b4.jpg">
+<img id="myimg01" style="position: absolute; width: 100px; height: 80px; top: 200px; left: 50px;" src="image1.jpg">
+<img id="myimg02" style="position: absolute; width: 100px; height: 80px; top: 200px; left: 250px;" src="image2.jpg">
+<img id="myimg03" style="position: absolute; width: 100px; height: 80px; top: 200px; left: 500px;" src="blackhole.jpg">
 
-<input type="button" value="auto background left" onclick="{
-    clearInterval(myclock);
-    let mytemp = '100px 0px';
-    myclock = setInterval(function(){
-        myglobalx -= 5;
-        mytemp = myglobalx + 'px 0px';
-        document.getElementById('mybody').style.backgroundPosition = mytemp;
-    }, 10);
-}">
+<input type="button" value="Start Moving Background" onclick="moveBackground()">
+<input type="button" value="Stop Moving Background" onclick="stopBackground()">
 
-<input type="button" value="image right fast button ontouchstart" ontouchstart="{this.click(); event.preventDefault();}"
-    onclick="{
-        document.getElementById('myimg01').style.left = parseInt(document.getElementById('myimg01').style.left) +
-            10 + 'px';
-        mycheckhit(); // checks for all collisions
-    }"><br><br>
+<input type="button" value="Move Up" onclick="movePerson('up')">
+<input type="button" value="Move Down" onclick="movePerson('down')">
+
+</body>
+</html>
