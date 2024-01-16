@@ -64,22 +64,14 @@
     function moveBackground() {
         let mytemp = '0px 0px';
         myclock = setInterval(function () {
-            myglobalx += 5; // Adjust the speed as needed
-
-            // Update the background position based on the movement of red boxes
-            let deathArea1 = document.getElementById('deathArea1');
-            let deathArea2 = document.getElementById('deathArea2');
-
-            let deathArea1Left = parseInt(deathArea1.style.left) + myglobalx;
-            let deathArea2Left = parseInt(deathArea2.style.left) + myglobalx;
-
-            mytemp = deathArea1Left + 'px ' + myglobaly + 'px, ' + deathArea2Left + 'px ' + myglobaly + 'px';
-            document.getElementById('mybody').style.backgroundPosition = mytemp;
-
             // Update the player position
             let person = document.getElementById('myimg01');
-            person.style.top = parseInt(person.style.top) + myglobaly + 'px';
-            person.style.left = parseInt(person.style.left) + myglobalx + 'px';
+            let personLeft = parseInt(person.style.left);
+            let personTop = parseInt(person.style.top);
+
+            // Update the background position based on the player's position
+            mytemp = -personLeft + 'px ' + -personTop + 'px';
+            document.getElementById('mybody').style.backgroundPosition = mytemp;
 
             mycheckhit(); // checks for all collisions
         }, 10);
@@ -101,16 +93,10 @@
                 myglobaly += stepSize;
                 break;
             case 'left':
-                // Check if moving left would collide with red boxes, if not, move left
-                if (!myhitother('myimg01', 'deathArea1') && !myhitother('myimg01', 'deathArea2')) {
-                    myglobalx -= stepSize;
-                }
+                myglobalx -= stepSize;
                 break;
             case 'right':
-                // Check if moving right would collide with red boxes, if not, move right
-                if (!myhitother('myimg01', 'deathArea1') && !myhitother('myimg01', 'deathArea2')) {
-                    myglobalx += stepSize;
-                }
+                myglobalx += stepSize;
                 break;
         }
 
