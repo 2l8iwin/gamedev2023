@@ -17,6 +17,13 @@
             height: 80px;
             background-color: brown; /* Adjust color as needed */
         }
+
+        .death-area {
+            position: absolute;
+            width: 100px;
+            height: 80px;
+            background-color: red; /* Adjust color as needed */
+        }
     </style>
 </head>
 <body id="mybody">
@@ -48,7 +55,7 @@
         // Add more checks for new maze elements
 
         // For simplicity, you can redirect to a game-over page on collision
-        if (myhitother('myimg01', 'wall1') || myhitother('myimg01', 'wall2')) {
+        if (myhitother('myimg01', 'wall1') || myhitother('myimg01', 'wall2') || myhitother('myimg01', 'deathArea1') || myhitother('myimg01', 'deathArea2')) {
             alert('Game Over!'); // You can customize the message
             window.location.href = 'http://www.google.ca';
         }
@@ -115,6 +122,10 @@
 <!-- Maze Walls -->
 <div id="wall1" class="maze-wall" style="top: 100px; left: 200px;"></div>
 <div id="wall2" class="maze-wall" style="top: 300px; left: 400px;"></div>
+
+<!-- Death Area Walls -->
+<div id="deathArea1" class="death-area" style="top: 100px; left: 200px;"></div>
+<div id="deathArea2" class="death-area" style="top: 300px; left: 400px;"></div>
 
 <!-- Buttons -->
 <input type="button" value="Start Moving Background" onclick="moveBackground()">
