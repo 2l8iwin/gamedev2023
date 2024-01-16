@@ -65,8 +65,23 @@
         let mytemp = '0px 0px';
         myclock = setInterval(function () {
             myglobalx += 5; // Adjust the speed as needed
-            mytemp = myglobalx + 'px ' + myglobaly + 'px';
+
+            // Update the background position based on the movement of red blocks
+            let deathArea1 = document.getElementById('deathArea1');
+            let deathArea2 = document.getElementById('deathArea2');
+
+            let deathArea1Left = parseInt(deathArea1.style.left) + myglobalx;
+            let deathArea2Left = parseInt(deathArea2.style.left) + myglobalx;
+
+            mytemp = deathArea1Left + 'px ' + myglobaly + 'px, ' + deathArea2Left + 'px ' + myglobaly + 'px';
             document.getElementById('mybody').style.backgroundPosition = mytemp;
+
+            // Update the player position
+            let person = document.getElementById('myimg01');
+            person.style.top = parseInt(person.style.top) + myglobaly + 'px';
+            person.style.left = parseInt(person.style.left) + myglobalx + 'px';
+
+            mycheckhit(); // checks for all collisions
         }, 10);
     }
 
