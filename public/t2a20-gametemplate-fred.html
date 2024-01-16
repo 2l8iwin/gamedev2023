@@ -33,7 +33,6 @@
 <script>
     let myglobalx = 0;
     let myglobaly = 0;
-    let myclock;
 
     function myhitother(my1, my2) {
         left1 = parseInt(document.getElementById(my1).style.left);
@@ -61,66 +60,19 @@
         }
     }
 
-    function moveBackground() {
-        let mytemp = '0px 0px';
-        myclock = setInterval(function () {
-            // Update the player position
-            let person = document.getElementById('myimg01');
-            let personLeft = parseInt(person.style.left);
-            let personTop = parseInt(person.style.top);
-
-            // Update the background position based on the player's position
-            mytemp = -personLeft + 'px ' + -personTop + 'px';
-            document.getElementById('mybody').style.backgroundPosition = mytemp;
-
-            mycheckhit(); // checks for all collisions
-        }, 10);
-    }
-
-    function stopBackground() {
-        clearInterval(myclock);
-    }
-
-    function movePerson(direction) {
-        let stepSize = 10; // Adjust the step size as needed
+    function movePlayer(event) {
         let person = document.getElementById('myimg01');
+        myglobalx = event.clientX - person.width / 2;
+        myglobaly = event.clientY - person.height / 2;
 
-        switch (direction) {
-            case 'up':
-                myglobaly -= stepSize;
-                break;
-            case 'down':
-                myglobaly += stepSize;
-                break;
-            case 'left':
-                myglobalx -= stepSize;
-                break;
-            case 'right':
-                myglobalx += stepSize;
-                break;
-        }
+        // Update the player position
+        person.style.top = myglobaly + 'px';
+        person.style.left = myglobalx + 'px';
 
-        person.style.top = parseInt(person.style.top) + myglobaly + 'px';
-        person.style.left = parseInt(person.style.left) + myglobalx + 'px';
-        mycheckhit(); // checks for all collisions
+        mycheckhit(); // checks for collisions
     }
 
-    document.addEventListener('keydown', function(event) {
-        switch(event.key) {
-            case 'w':
-                movePerson('up');
-                break;
-            case 'a':
-                movePerson('left');
-                break;
-            case 's':
-                movePerson('down');
-                break;
-            case 'd':
-                movePerson('right');
-                break;
-        }
-    });
+    document.addEventListener('mousemove', movePlayer);
 </script>
 
 <!-- Player -->
@@ -129,10 +81,6 @@
 <!-- Death Area Walls -->
 <div id="deathArea1" class="death-area" style="top: 100px; left: 200px;"></div>
 <div id="deathArea2" class="death-area" style="top: 300px; left: 400px;"></div>
-
-<!-- Buttons -->
-<input type="button" value="Start Moving Background" onclick="moveBackground()">
-<input type="button" value="Stop Moving Background" onclick="stopBackground()">
 
 </body>
 </html>
