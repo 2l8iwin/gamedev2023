@@ -3,129 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maze Game</title>
+    <title>2D RPG</title>
     <style>
-        body {
-            background-repeat: no-repeat;
-            background-size: 80%;
-            background-image: url('background.jpg');
-        }
-
-        .maze-wall {
-            position: absolute;
-            width: 100px;
-            height: 80px;
-            background-color: brown; /* Adjust color as needed */
-        }
-
-        .death-area {
-            position: absolute;
-            width: 100px;
-            height: 80px;
-            background-color: red; /* Adjust color as needed */
+        canvas {
+            border: 2px solid black;
+            display: block;
+            margin: auto;
         }
     </style>
 </head>
-<body id="mybody">
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/phaser@3.65.1/dist/phaser.js"></script>
+    <script>
+        const config = {
+            type: Phaser.AUTO,
+            width: 1000,
+            height: 1000,
+            physics: {
+                default: 'arcade',
+                arcade: {
+                    gravity: { y: 0 },
+                    debug: false
+                }
+            },
+            scene: {
+                preload: preload,
+                create: create,
+                update: update
+            }
+        };
 
-<h1 align="center">Maze Game</h1><br><br><br><br>
+        const game = new Phaser.Game(config);
 
-<script>
-    let myglobalx = 0;
-    let myglobaly = 0;
-    let canMove = false; // Flag to control player movement
-    let myclock;
+        let player;
+        let enemy;
+        let gameStarted = false;
 
-    function myhitother(my1, my2) {
-        left1 = parseInt(document.getElementById(my1).style.left);
-        right1 = left1 + parseInt(document.getElementById(my1).style.width);
-        top1 = parseInt(document.getElementById(my1).style.top);
-        bottom1 = top1 + parseInt(document.getElementById(my1).style.height);
-        left2 = parseInt(document.getElementById(my2).style.left);
-        right2 = left2 + parseInt(document.getElementById(my2).style.width);
-        top2 = parseInt(document.getElementById(my2).style.top);
-        bottom2 = top2 + parseInt(document.getElementById(my2).style.height);
-        return (right1 >= left2) &&
-            (bottom1 >= top2) &&
-            (left2 <= right1) &&
-            (top2 <= bottom1);
-    }
-
-    function mycheckhit() {
-        // Check for collisions with walls or other obstacles
-        // Add more checks for new maze elements
-
-        // For simplicity, you can redirect to a game-over page on collision
-        if (canMove && (myhitother('myimg01', 'deathArea1') || myhitother('myimg01', 'deathArea2'))) {
-            alert('Game Over!'); // You can customize the message
-            window.location.href = 'http://www.google.ca';
+        function preload() {
+            this.load.image('player', 'path_to_player_image.png');
+            this.load.image('enemy', 'path_to_enemy_image.png');
         }
-    }
 
-    function moveBackground() {
-        let mytemp = '0px 0px';
-        myclock = setInterval(function () {
-            myglobalx += 5; // Adjust the speed as needed
+        function create() {
+            player = this.physics.add.sprite(900, 900, 'player');
+            enemy = this.physics.add.sprite(100, 100, 'enemy');
 
-            // Update the background position based on the movement of red boxes
-            let deathArea1 = document.getElementById('deathArea1');
-            let deathArea2 = document.getElementById('deathArea2');
+            this.physics.add.overlap(player, enemy, playerHitEnemy, null, this);
 
-            let deathArea1Left = parseInt(deathArea1.style.left) + myglobalx;
-            let deathArea2Left = parseInt(deathArea2.style.left) + myglobalx;
+            // Draw start button
+            drawStartButton(this);
 
-            mytemp = deathArea1Left + 'px ' + myglobaly + 'px, ' + deathArea2Left + 'px ' + myglobaly + 'px';
-            document.getElementById('mybody').style.backgroundPosition = mytemp;
-
-            // Update the player position
-            let person = document.getElementById('myimg01');
-            person.style.top = parseInt(person.style.top) + myglobaly + 'px';
-            person.style.left = parseInt(person.style.left) + myglobalx + 'px';
-
-            mycheckhit(); // checks for all collisions
-        }, 10);
-    }
-
-    function stopBackground() {
-        clearInterval(myclock);
-    }
-
-    function startGame() {
-        canMove = true;
-        moveBackground();
-    }
-
-    document.addEventListener('mousemove', function(event) {
-        if (canMove) {
-            movePlayer(event);
+            this.input.keyboard.on('keydown-SPACE', function (event) {
+                if (!gameStarted) {
+                    gameStarted = true;
+                    removeStartButton();
+                }
+            });
         }
-    });
 
-    function movePlayer(event) {
-        let person = document.getElementById('c4ca641a-0127-4f84-b83f-354883b5b4b4.jpg');
-        myglobalx = event.clientX - person.width / 2;
-        myglobaly = event.clientY - person.height / 2;
+        function update() {
+            if (gameStarted) {
+                // Handle player movement
+                const cursors = this.input.keyboard.createCursorKeys();
+                if (cursors.up.isDown) {
+                    player.y -= 5;
+                }
+                if (cursors.down.isDown) {
+                    player.y += 5;
+                }
+                if (cursors.left.isDown) {
+                    player.x -= 5;
+                }
+                if (cursors.right.isDown) {
+                    player.x += 5;
+                }
 
-        // Update the player position
-        person.style.top = myglobaly + 'px';
-        person.style.left = myglobalx + 'px';
+                // Handle enemy movement
+                const rand = Math.random();
+                if (rand < 0.8) {
+                    // 80% chance to follow player
+                    this.physics.moveToObject(enemy, player, 100);
+                } else {
+                    // 20% chance to move randomly
+                    enemy.setVelocity(Phaser.Math.Between(-50, 50), Phaser.Math.Between(-50, 50));
+                }
+            }
+        }
 
-        mycheckhit(); // checks for collisions
-    }
-</script>
+        function playerHitEnemy(player, enemy) {
+            console.log("Player hit enemy!");
+            // Handle damage or game over logic here
+        }
 
-<!-- Player -->
-<img id="myimg01" style="position: absolute; width: 100px; height: 80px; top: 200px; left: 50px;" src="player.jpg">
+        function drawStartButton(scene) {
+            const startButton = scene.add.rectangle(500, 500, 100, 50, 0x00ff00);
+            startButton.setInteractive();
+            startButton.on('pointerdown', function () {
+                gameStarted = true;
+                removeStartButton();
+            });
+        }
 
-<!-- Death Area Walls -->
-<div id="deathArea1" class="death-area" style="top: 100px; left: 200px;"></div>
-<div id="deathArea2" class="death-area" style="top: 300px; left: 400px;"></div>
-
-<!-- Start Button -->
-<input type="button" value="Start Game" onclick="startGame()">
-
-<!-- Stop Button -->
-<input type="button" value="Stop Moving Background" onclick="stopBackground()">
-
+        function removeStartButton() {
+            document.querySelector('canvas').style.cursor = 'default';
+            document.querySelectorAll('rect').forEach(function (rect) {
+                rect.remove();
+            });
+        }
+    </script>
 </body>
 </html>
