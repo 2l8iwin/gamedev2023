@@ -1,1 +1,118 @@
 https://replit.com/@braydensears2/BossyObviousDecompilers#main.py                 level 1
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2D RPG</title>
+    <style>
+        canvas {
+            border: 2px solid black;
+            display: block;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/phaser@3.65.1/dist/phaser.js"></script>
+    <script>
+        const config = {
+            type: Phaser.AUTO,
+            width: 1000,
+            height: 1000,
+            physics: {
+                default: 'arcade',
+                arcade: {
+                    gravity: { y: 0 },
+                    debug: false
+                }
+            },
+            scene: {
+                preload: preload,
+                create: create,
+                update: update
+            }
+        };
+
+        const game = new Phaser.Game(config);
+
+        let player;
+        let enemy;
+        let gameStarted = false;
+
+        function preload() {
+            this.load.image('player', 'path_to_player_image.png');
+            this.load.image('enemy', 'path_to_enemy_image.png');
+        }
+
+        function create() {
+            player = this.physics.add.sprite(900, 900, 'player');
+            enemy = this.physics.add.sprite(100, 100, 'enemy');
+
+            this.physics.add.overlap(player, enemy, playerHitEnemy, null, this);
+
+            // Draw start button
+            drawStartButton(this);
+
+            this.input.keyboard.on('keydown-SPACE', function (event) {
+                if (!gameStarted) {
+                    gameStarted = true;
+                    removeStartButton();
+                }
+            });
+        }
+
+        function update() {
+            if (gameStarted) {
+                // Handle player movement
+                const cursors = this.input.keyboard.createCursorKeys();
+                if (cursors.up.isDown) {
+                    player.y -= 5;
+                }
+                if (cursors.down.isDown) {
+                    player.y += 5;
+                }
+                if (cursors.left.isDown) {
+                    player.x -= 5;
+                }
+                if (cursors.right.isDown) {
+                    player.x += 5;
+                }
+
+                // Handle enemy movement
+                const rand = Math.random();
+                if (rand < 0.8) {
+                    // 80% chance to follow player
+                    this.physics.moveToObject(enemy, player, 100);
+                } else {
+                    // 20% chance to move randomly
+                    enemy.setVelocity(Phaser.Math.Between(-50, 50), Phaser.Math.Between(-50, 50));
+                }
+            }
+        }
+
+        function playerHitEnemy(player, enemy) {
+            console.log("Player hit enemy!");
+            // Handle damage or game over logic here
+        }
+
+        function drawStartButton(scene) {
+            const startButton = scene.add.rectangle(500, 500, 100, 50, 0x00ff00);
+            startButton.setInteractive();
+            startButton.on('pointerdown', function () {
+                gameStarted = true;
+                removeStartButton();
+            });
+        }
+
+        function removeStartButton() {
+            document.querySelector('canvas').style.cursor = 'default';
+            document.querySelectorAll('rect').forEach(function (rect) {
+                rect.remove();
+            });
+        }
+    </script>
+</body>
+</html>
